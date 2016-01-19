@@ -14,6 +14,7 @@
    It should have type: int * int * int -> int * int * int
 *)
 
+   let fixLastTwo ((x, y, z): int*int*int) = if y>z then (x, z, y) else (x, y, z)
 
 (*
    Write a function named "order" that takes a triple of integers and
@@ -22,6 +23,7 @@
    It should have type: int * int * int -> int * int * int
 *)
 
+   let order ((x, y, z): int*int*int) = if x<z then (if x<y then fixLastTwo (x, y, z)) else 
 
 (*
    Write a function "distance" that given a pair of integers returns the
