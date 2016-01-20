@@ -20,7 +20,8 @@ let t6a = tooShort (4, "tree") = false
 let t6b = tooShort (7, "spoon") = true
 
 let t7a = totalLength ("you", "me") = 5
+let t7b = totalLength ("", "") = 0
 
 let t8a = orderedByLength ("long", "one", "at") = false
 
-let t9a = prodInRange (3, 5) == true
+let t9a = prodInRange (3, 5) = true

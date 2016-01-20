@@ -74,8 +74,7 @@ let tooShort ((x, str): int*string) = if x>String.length (str) then true else fa
    It should have type string * string -> int
 *)
 
-
-
+let totalLength ((a,b): string*string) = String.length (a) + String.length (b)
 
 (*
    Write a function "orderedByLength" that is given a triple of strings and returns
