@@ -36,7 +36,6 @@ else fixLastTwo (z, x, y))
 
 let distance ((x, y): int*int) = if x>y then x-y else y-x
 
-
 (*
    Write a function "greeting" that given a pair of an integer (age) and
    a string (name) creates the string: "Greetings <name>, you are <age> years old!".
@@ -46,7 +45,7 @@ let distance ((x, y): int*int) = if x>y then x-y else y-x
    You may see "bytes" instead of "string" as a type.
 *)
 
-
+let greeting ((age, name): int*string) = "Greetings " ^ name ^ ", you are " ^ string_of_int age ^ " years old!"
 
 (*
    Write a function "greeting2" that is similarly given a pair of an integer (age)
