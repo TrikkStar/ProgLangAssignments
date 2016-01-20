@@ -74,7 +74,7 @@ let tooShort ((x, str): int*string) = if x>String.length (str) then true else fa
    It should have type string * string -> int
 *)
 
-let totalLength ((a,b): string*string) = String.length (a) + String.length (b)
+let totalLength ((a, b): string*string) = String.length (a) + String.length (b)
 
 (*
    Write a function "orderedByLength" that is given a triple of strings and returns
@@ -84,7 +84,7 @@ let totalLength ((a,b): string*string) = String.length (a) + String.length (b)
    It should have type: string * string * string -> bool
 *)
 
-
+let orderedByLength ((a, b, c): string*string*string) = let lenA = Striing.length (a) in 
 
 (*
    Write a function "prodInRange" that is given a pair of integers, and it returns
@@ -94,4 +94,4 @@ let totalLength ((a,b): string*string) = String.length (a) + String.length (b)
    It should have type: int * int -> bool
 *)
 
-let prodInRange ((x,y): int*int) = let product = x*y in if product>10 then if product<20 then true else false
+let prodInRange ((x, y): int*int) = let product = x*y in if product>10 then if product<20 then true else false
