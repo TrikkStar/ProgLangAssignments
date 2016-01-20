@@ -17,6 +17,7 @@ let t5b = greeting2 (17, "Andrew") = "Greetings Andrew, you are a youngster!"
 let t5c = greeting2 (57, "Odin") = "Greetings Odin, you are young at heart!"
 
 let t6a = tooShort (4, "tree") = false
+let t6b = tooShort (7, "spoon") = true
 
 let t7a = totalLength ("you", "me") = 5
 

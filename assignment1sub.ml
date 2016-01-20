@@ -66,7 +66,7 @@ let greeting2 ((age, name): int*string) = if age>20 then "Greetings " ^ name ^ "
    It should have type: int * string -> bool
 *)
 
-
+let tooShort ((x, str): int*string) = if x>String.length (str) then true else false
 
 (*
    Write a function "totalLength" that is given a pair of strings and returns
