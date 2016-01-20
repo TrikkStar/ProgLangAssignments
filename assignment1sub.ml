@@ -56,9 +56,7 @@ let greeting ((age, name): int*string) = "Greetings " ^ name ^ ", you are " ^ st
    You may see "bytes" instead of "string" as a type.
 *)
 
-let greeting ((age, name): int*string) = if age>20 then "Greetings " ^ name ^ ", you are young at heart!"
-else if age>0 then "Greetings " ^ name ^ ", you are a youngster!"
-else "Greetings " ^ name ^ ", you are not born yet!"
+let greeting2 ((age, name): int*string) = if age>20 then "Greetings " ^ name ^ ", you are young at heart!" else if age>0 then "Greetings " ^ name ^ ", you are a youngster!" else "Greetings " ^ name ^ ", you are not born yet!"
 
 (*
    Write a function "tooShort" that is given a pair of an integer and a string

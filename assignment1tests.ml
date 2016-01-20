@@ -13,6 +13,8 @@ let t3c = distance (5, 5) = 0
 let t4a = greeting (23, "Pete") = "Greetings Pete, you are 23 years old!"
 
 let t5a = greeting2 (0, "Jackson") = "Greetings Jackson, you are not born yet!"
+let t5b = greeting2 (17, "Andrew") = "Greetings Andrew, you are a youngster!"
+let t5c = greeting2 (57, "Odin") = "Greetings Odin, you are young at heart!"
 
 let t6a = tooShort (4, "tree") = false
 
