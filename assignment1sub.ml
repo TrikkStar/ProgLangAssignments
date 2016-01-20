@@ -23,7 +23,9 @@
    It should have type: int * int * int -> int * int * int
 *)
 
-   let order ((x, y, z): int*int*int) = if x<z then (if x<y then fixLastTwo (x, y, z)) else 
+   let order ((x, y, z): int*int*int) = if x<z then (if x<y then fixLastTwo (x, y, z))
+else (if y<x then (if y<z then fixLastTwo (y, x, z))
+else fixLastTwo (z, x, y))
 
 (*
    Write a function "distance" that given a pair of integers returns the
