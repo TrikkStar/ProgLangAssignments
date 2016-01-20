@@ -25,3 +25,5 @@ let t7b = totalLength ("", "") = 0
 let t8a = orderedByLength ("long", "one", "at") = false
 
 let t9a = prodInRange (3, 5) = true
+let t9b = prodInRange (2, 5) = false
+let t9c = prodInRange (4, 5) = false

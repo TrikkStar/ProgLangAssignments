@@ -86,7 +86,6 @@ let totalLength ((a,b): string*string) = String.length (a) + String.length (b)
 
 
 
-
 (*
    Write a function "prodInRange" that is given a pair of integers, and it returns
    a boolean indicating whether their product is strictly between 10 and 20. For a
@@ -95,3 +94,4 @@ let totalLength ((a,b): string*string) = String.length (a) + String.length (b)
    It should have type: int * int -> bool
 *)
 
+let prodInRange ((x,y): int*int) = let product = x*y in if product>10 then if product<20 then true else false
