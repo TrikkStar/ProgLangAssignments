@@ -4,6 +4,7 @@ let t1b = fixLastTwo (5, 2, 1) = (5, 1, 2)
 
 let t2a = order (2, 5, 3) = (2, 3, 5)
 let t2b = order (5, 3, 2) = (2, 3, 5)
+let t2c = order (3, 2, 5) = (2, 3, 5)
 
 let t3a = distance (6, 3) = 3
 
