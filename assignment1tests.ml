@@ -7,6 +7,8 @@ let t2b = order (5, 3, 2) = (2, 3, 5)
 let t2c = order (3, 2, 5) = (2, 3, 5)
 
 let t3a = distance (6, 3) = 3
+let t3b = distance (3, 6) = 3
+let t3c = distance (5, 5) = 0
 
 let t4a = greeting (23, "Pete") = "Greetings Pete, you are 23 years old!"
 
