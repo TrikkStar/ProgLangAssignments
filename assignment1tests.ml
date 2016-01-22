@@ -23,6 +23,11 @@ let t7a = totalLength ("you", "me") = 5
 let t7b = totalLength ("", "") = 0
 
 let t8a = orderedByLength ("long", "one", "at") = false
+let t8b = orderedByLength ("one", "long", "at") = false
+let t8c = orderedByLength ("at", "long", "one") = false
+let t8d = orderedByLength ("long", "at", "one") = false
+let t8e = orderedByLength ("one", "at", "long") = false
+let t8f = orderedByLength ("at", "one", "long") = true
 
 let t9a = prodInRange (3, 5) = true
 let t9b = prodInRange (2, 5) = false
