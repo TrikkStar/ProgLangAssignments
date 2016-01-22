@@ -23,7 +23,19 @@ let fixLastTwo ((x, y, z): int*int*int) = if y>z then (x, z, y) else (x, y, z)
    It should have type: int * int * int -> int * int * int
 *)
 
-let order ((x, y, z): int*int*int) = if x<z then (if x<y then fixLastTwo (x, y, z) else fixLastTwo (y, z, x)) else (if y<x then (if y<z then fixLastTwo (y, x, z) else fixLastTwo (z, y, x) ) else fixLastTwo (z, x, y))
+let order ((x, y, z): int*int*int) = 
+ if x<z 
+ then 
+  if x<y 
+   then fixLastTwo (x, y, z) 
+   else fixLastTwo (y, z, x) 
+ else 
+  if y<x 
+  then 
+   if y<z 
+   then fixLastTwo (y, x, z) 
+   else fixLastTwo (z, y, x)) 
+  else fixLastTwo (z, x, y))
 
 (*
    Write a function "distance" that given a pair of integers returns the
@@ -56,7 +68,13 @@ let greeting ((age, name): int*string) = "Greetings " ^ name ^ ", you are " ^ st
    You may see "bytes" instead of "string" as a type.
 *)
 
-let greeting2 ((age, name): int*string) = if age>20 then "Greetings " ^ name ^ ", you are young at heart!" else if age>0 then "Greetings " ^ name ^ ", you are a youngster!" else "Greetings " ^ name ^ ", you are not born yet!"
+let greeting2 ((age, name): int*string) = 
+ if age>20 
+ then "Greetings " ^ name ^ ", you are young at heart!" 
+ else 
+  if age>0 
+  then "Greetings " ^ name ^ ", you are a youngster!" 
+  else "Greetings " ^ name ^ ", you are not born yet!"
 
 (*
    Write a function "tooShort" that is given a pair of an integer and a string
@@ -84,7 +102,14 @@ let totalLength ((a, b): string*string) = String.length (a) + String.length (b)
    It should have type: string * string * string -> bool
 *)
 
-let orderedByLength ((a, b, c): string*string*string) = let lenB = String.length (b) in if String.length (a)<lenB then if lenB<String.length (c) then true else false else false
+let orderedByLength ((a, b, c): string*string*string) = 
+ let lenB = String.length (b) in 
+  if String.length (a)<lenB 
+  then 
+   if lenB<String.length (c) 
+   then true 
+   else false 
+  else false
 
 (*
    Write a function "prodInRange" that is given a pair of integers, and it returns
@@ -94,4 +119,11 @@ let orderedByLength ((a, b, c): string*string*string) = let lenB = String.length
    It should have type: int * int -> bool
 *)
 
-let prodInRange ((x, y): int*int) = let product = x*y in if product>10 then if product<20 then true else false else false
+let prodInRange ((x, y): int*int) = 
+ let product = x*y in 
+  if product>10 
+  then 
+   if product<20 
+   then true 
+   else false 
+  else false
