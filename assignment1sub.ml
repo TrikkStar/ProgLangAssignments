@@ -23,7 +23,7 @@ let fixLastTwo ((x, y, z): int*int*int) = if y>z then (x, z, y) else (x, y, z)
    It should have type: int * int * int -> int * int * int
 *)
 
-let order ((x, y, z): int*int*int) = if x<z then (if x<y then fixLastTwo (x, y, z)) else (if y<x then (if y<z then fixLastTwo (y, x, z)) else fixLastTwo (z, x, y))
+let order ((x, y, z): int*int*int) = if x<z then (if x<y then fixLastTwo (x, y, z)) else (if y<x then (if y<z then fixLastTwo (y, x, z)) else fixLastTwo (z, x, y))
 
 (*
    Write a function "distance" that given a pair of integers returns the
@@ -94,4 +94,4 @@ let orderedByLength ((a, b, c): string*string*string) = let lenA = Striing.lengt
    It should have type: int * int -> bool
 *)
 
-let prodInRange ((x, y): int*int) = let product = x*y in if product>10 then if product<20 then true else false
+let prodInRange ((x, y): int*int) = let product = x*y in if product>10 then if product<20 then true else false else false
