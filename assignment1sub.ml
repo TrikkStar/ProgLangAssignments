@@ -84,7 +84,7 @@ let totalLength ((a, b): string*string) = String.length (a) + String.length (b)
    It should have type: string * string * string -> bool
 *)
 
-let orderedByLength ((a, b, c): string*string*string) = let lenA = Striing.length (a) in 
+let orderedByLength ((a, b, c): string*string*string) = let lenB = String.length (b) in if String.length (a)<lenB then if lenB<String.length (c) then true else false else false
 
 (*
    Write a function "prodInRange" that is given a pair of integers, and it returns
