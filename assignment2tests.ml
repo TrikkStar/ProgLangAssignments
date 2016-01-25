@@ -23,6 +23,8 @@ let t5a = remove (3, [3; 3; 3; 3]) = [3; 1]
 let t5a = remove (3, [2; 4; 5; 1]) = [2; 4; 5; 1]
 
 let t6a = removeDups [4; 1; 2; 1; 4; 5; 20] = [4; 1; 2; 5; 20]
+let t6b = removeDupes [3; 3; 3; 3] = [3]
+let t6c = removeDupes [3; 4; 5; 6] = [3; 4; 5; 6]
 
 let t7a = collateSome [Some 1; None; Some 2; Some 1; None; Some 3] = Some [1; 2; 1; 3]
 
