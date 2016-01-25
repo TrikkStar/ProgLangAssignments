@@ -14,7 +14,7 @@
    It should have type: int * string list -> string
 *)
 
-
+let getnth ((n, lst): int*string list) = "string"
 
 (*
    Write a function `lookup` that takes as input a pair of a string s and a list
@@ -25,8 +25,7 @@
    It should have type: string * (string * int) list -> int option
 *)
 
-
-
+let lookup ((s, lst): string*(string*int) list) = Some 5
 
 (*
    Write a function `inPairs` that takes a list of integers and returns a list
@@ -37,8 +36,7 @@
    It should have type: int list -> (int * int) list
 *)
 
-
-
+let inPairs ((lst): int list) = [(4,5)]
 
 (*
    Write a function `flatten` that takes as input a list of lists of integers
@@ -48,7 +46,7 @@
    It should have type: int list list -> int list
 *)
 
-
+let flatten ((lst): int list list) = [5]
 
 (*
    Write a function `remove` that takes as input a pair of an integer n and a
@@ -56,7 +54,7 @@
    It should have type: int * int list -> int list
 *)
 
-
+let remove ((n, lst): int*int list) = [5]
 
 (*
    Write a function `removeDups` that takes a list of integers and returns a
@@ -66,8 +64,7 @@
    It should have type: int list -> int list
 *)
 
-
-
+let removeDups ((lst): int list) = [5]
 
 (*
    Write a function `collateSome` that takes as input a list of int options
@@ -77,8 +74,7 @@
    It should have type: int option list -> int list
 *)
 
-
-
+let collateSome ((lst): int option list) = [5]
 
 (*
    Write a function `unzip2` that takes as input a list of pairs of integers
@@ -88,8 +84,7 @@
    It should have type: (int * int) list -> int list * int list
 *)
 
-
-
+let unzip2 ((lst): (int*int) list) = ([5],[6])
 
 (*
    Write a function `makeChange` that takes as input a pair of an integer `n` and a
@@ -106,4 +101,4 @@
    It should have type: int * int list -> int list option
 *)
 
-
+let makeChange ((n, lst): int*int list) = Some [5]
