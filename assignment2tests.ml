@@ -16,6 +16,7 @@ let t3b = inPairs [1; 2; 3; 4; 5; 6] = [(1, 2); (3, 4); (5, 6)]
 let t3c = inPairs [1] = []
 
 let t4a = flatten [[1; 2; 3]; []; [4; 5]; [6]] = [1; 2; 3; 4; 5; 6]
+let t4b = flatten [[]; [];] = []
 
 let t5a = remove (3, [3; 4; 3; 1]) = [4; 1]
 
