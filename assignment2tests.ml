@@ -1,14 +1,15 @@
 let t1a = getnth (3, ["hi"; "there"; "you"]) = "you"
-let t1b = try (getnth (3, ["hi"; "there"]); false)  with
+let t1b = getnth (1, ["hi"; "there"; "you"]) = "hi"
+let t1c = try (getnth (3, ["hi"; "there"]); false)  with
             | Failure "getnth" -> true
             | _ -> false
-let t1c = getnth (1, ["hi"; "there"; "you"]) = "hi"
 let t1d = try (getnth (0, ["hi"; "there"]); false)  with
             | Failure "getnth" -> true
             | _ -> false
 
 let t2a = lookup ("you", []) = None
 let t2b = lookup ("you", [("him", 2); ("you", 3)]) = Some 3
+let t2c = lookup ("", [("him", 2); ("you", 3); ("string", 53); ("", 42)]) = Some 42
 
 let t3a = inPairs [1; 2; 3; 4; 5] = [(1, 2); (3, 4)]
 
