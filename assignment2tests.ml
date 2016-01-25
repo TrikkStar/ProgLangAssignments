@@ -36,3 +36,5 @@ let t8c = unzip2 [] = ([], [])
 let t9a = makeChange (20, [8; 3; 2]) = Some [8; 8; 2; 2]
 let t9b = makeChange (20, [8; 3]) = Some [8; 3; 3; 3; 3]
 let t9c = makeChange (20, [13; 11]) = None
+let t9d = makeChange (20, [19; 2]) = Some [2; 2; 2; 2; 2; 2; 2; 2; 2; 2]
+let t9e = makeChange (20, [11; 6; 5; 2; 1]) = Some [11; 6; 2; 1]
