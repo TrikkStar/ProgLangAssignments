@@ -12,6 +12,8 @@ let t2b = lookup ("you", [("him", 2); ("you", 3)]) = Some 3
 let t2c = lookup ("", [("him", 2); ("you", 3); ("string", 53); ("", 42)]) = Some 42
 
 let t3a = inPairs [1; 2; 3; 4; 5] = [(1, 2); (3, 4)]
+let t3b = inPairs [1; 2; 3; 4; 5; 6] = [(1, 2); (3, 4); (5, 6)]
+let t3c = inPairs [1] = []
 
 let t4a = flatten [[1; 2; 3]; []; [4; 5]; [6]] = [1; 2; 3; 4; 5; 6]
 
