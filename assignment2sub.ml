@@ -14,7 +14,7 @@
    It should have type: int * string list -> string
 *)
 
-let rec getnth ((n, lst): int*string list) = 
+let rec getnth ((n, lst): int * string list) = 
   match lst with
   | l1 :: rest ->
     if n > 0
@@ -34,7 +34,7 @@ let rec getnth ((n, lst): int*string list) =
    It should have type: string * (string * int) list -> int option
 *)
 
-let rec lookup ((s, lst): string*(string*int) list) = 
+let rec lookup ((s, lst): string * (string * int) list) = 
   match lst with
   | l1 :: rest ->
     match l1 with
@@ -83,7 +83,7 @@ let rec flatten ((lst): int list list) =
    It should have type: int * int list -> int list
 *)
 
-let rec remove ((n, lst): int*int list) =
+let rec remove ((n, lst): int * int list) =
   match lst with
   | num :: rest ->
     if n = num
@@ -126,7 +126,11 @@ let rec collateSome ((lst): int option list) =
    It should have type: (int * int) list -> int list * int list
 *)
 
-let rec unzip2 ((lst): (int*int) list) = ([5],[6])
+let rec unzip2 ((lst): (int * int) list) = 
+  let rec pair ((x, y): int * int) = stuff in 
+  match lst with
+  | l1 :: rest -> 
+  | [] -> ()
 
 (*
    Write a function `makeChange` that takes as input a pair of an integer `n` and a
@@ -143,7 +147,7 @@ let rec unzip2 ((lst): (int*int) list) = ([5],[6])
    It should have type: int * int list -> int list option
 *)
 
-let rec makeChange ((n, lst): int*int list) =
+let rec makeChange ((n, lst): int * int list) =
   match lst with
   | l1 :: rest -> 
     if l1 < n
