@@ -98,7 +98,7 @@ let rec remove ((n, lst): int*int list) =
    It should have type: int list -> int list
 *)
 
-let removeDups ((lst): int list) = [5]
+let rec removeDups ((lst): int list) = [5]
 
 (*
    Write a function `collateSome` that takes as input a list of int options
@@ -108,7 +108,7 @@ let removeDups ((lst): int list) = [5]
    It should have type: int option list -> int list
 *)
 
-let collateSome ((lst): int option list) = [5]
+let rec collateSome ((lst): int option list) = [5]
 
 (*
    Write a function `unzip2` that takes as input a list of pairs of integers
@@ -118,7 +118,7 @@ let collateSome ((lst): int option list) = [5]
    It should have type: (int * int) list -> int list * int list
 *)
 
-let unzip2 ((lst): (int*int) list) = ([5],[6])
+let rec unzip2 ((lst): (int*int) list) = ([5],[6])
 
 (*
    Write a function `makeChange` that takes as input a pair of an integer `n` and a
@@ -135,4 +135,4 @@ let unzip2 ((lst): (int*int) list) = ([5],[6])
    It should have type: int * int list -> int list option
 *)
 
-let makeChange ((n, lst): int*int list) = Some [5]
+let rec makeChange ((n, lst): int*int list) = Some [5]
