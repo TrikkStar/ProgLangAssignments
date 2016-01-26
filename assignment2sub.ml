@@ -54,7 +54,11 @@ let rec lookup ((s, lst): string*(string*int) list) =
    It should have type: int list -> (int * int) list
 *)
 
-let inPairs ((lst): int list) = [(4,5)]
+let rec inPairs ((lst): int list) =
+  match lst with
+  | x :: y :: rest -> (x, y) :: inPairs(rest)
+  | _  :: () -> ()
+  | [] -> ()
 
 (*
    Write a function `flatten` that takes as input a list of lists of integers
