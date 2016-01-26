@@ -71,10 +71,11 @@ let rec inPairs ((lst): int list) =
 let rec flatten ((lst): int list list) =
   match lst with
   | l1 :: rest -> 
-    match l1 with
-    | num :: cont -> 
-    | _ -> expr2
-  | _ -> expr2
+    let rec flat ((ints): int list) = 
+      match l1 with
+      | num :: cont -> num :: flat cont
+      | [] -> flatten rest
+  | [] -> ()
 
 (*
    Write a function `remove` that takes as input a pair of an integer n and a
