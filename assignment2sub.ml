@@ -14,7 +14,16 @@
    It should have type: int * string list -> string
 *)
 
-let getnth ((n, lst): int*string list) = "string"
+let rec getnth ((n, lst): int*string list) = //add counter
+  match lst with
+  | l1 :: rest ->
+    if n > 0
+    then 
+      if n <> 1 
+      then getnth (n-1, rest)
+      else l1
+    else raise (Failure "getnth")
+  | [] -> raise (Failure "getnth")
 
 (*
    Write a function `lookup` that takes as input a pair of a string s and a list
