@@ -99,7 +99,10 @@ let rec remove ((n, lst): int*int list) =
    It should have type: int list -> int list
 *)
 
-let rec removeDups ((lst): int list) = [5]
+let rec removeDups ((lst): int list) = 
+  match lst with
+  | l1 :: rest -> l1 :: removeDupes (remove(l1, rest))
+  | [] -> ()
 
 (*
    Write a function `collateSome` that takes as input a list of int options
