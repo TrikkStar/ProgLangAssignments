@@ -34,7 +34,16 @@ let rec getnth ((n, lst): int*string list) =
    It should have type: string * (string * int) list -> int option
 *)
 
-let lookup ((s, lst): string*(string*int) list) = Some 5
+let rec lookup ((s, lst): string*(string*int) list) = 
+  match lst with
+  | l1 :: rest ->
+    match l1 with
+    | str :: n :: () -> expr
+      if str = s
+      then Some n
+      else lookup (s, rest)
+    | [] -> lookup (s, rest)
+  | [] -> None
 
 (*
    Write a function `inPairs` that takes a list of integers and returns a list
