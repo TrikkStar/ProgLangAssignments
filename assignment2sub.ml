@@ -135,4 +135,14 @@ let rec unzip2 ((lst): (int*int) list) = ([5],[6])
    It should have type: int * int list -> int list option
 *)
 
-let rec makeChange ((n, lst): int*int list) = Some [5]
+let rec makeChange ((n, lst): int*int list) =
+  match lst with
+  | l1 :: rest -> 
+    if l1 < n
+    then Some l1 :: makeChange (n - l1, lst)
+    else makeChange (n, rest)
+  | [] ->
+    if n = 0
+    then ()
+    else None
+
