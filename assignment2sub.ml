@@ -14,7 +14,7 @@
    It should have type: int * string list -> string
 *)
 
-let rec getnth ((n, lst): int*string list) = //add counter
+let rec getnth ((n, lst): int*string list) = 
   match lst with
   | l1 :: rest ->
     if n > 0
