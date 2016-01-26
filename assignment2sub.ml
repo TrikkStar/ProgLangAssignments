@@ -112,7 +112,11 @@ let rec removeDups ((lst): int list) =
    It should have type: int option list -> int list
 *)
 
-let rec collateSome ((lst): int option list) = [5]
+let rec collateSome ((lst): int option list) =
+  match lst with
+  | Some l1 :: rest -> l1 :: collateSome rest
+  | None :: rest -> collateSome rest
+  | [] -> ()
 
 (*
    Write a function `unzip2` that takes as input a list of pairs of integers
