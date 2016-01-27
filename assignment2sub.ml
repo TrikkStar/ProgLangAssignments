@@ -67,16 +67,12 @@ let rec inPairs ((lst): int list) =
    flatten [[1; 2; 3]; []; [4; 5]; [6]] = [1; 2; 3; 4; 5; 6]
    It should have type: int list list -> int list
 *)
-(*
+
 let rec flatten ((lst): int list list) =
-  match lst with
-  | l1 :: rest ->
-    let rec flat ((ints): int list) = 
-      match l1 with
-      | num :: cont -> num :: flat cont
-      | [] -> flatten (rest)
-  | [] -> ()
-*)
+	match lst with
+	| l1 :: rest -> l1 @ flatten rest
+  | [] -> []
+
 (*
    Write a function `remove` that takes as input a pair of an integer n and a
    list of integers, and removes from that list any occurrence of n.
@@ -101,7 +97,7 @@ let rec remove ((n, lst): int * int list) =
 
 let rec removeDups ((lst): int list) = 
   match lst with
-  | l1 :: rest -> l1 :: removeDupes (remove(l1, rest))
+  | l1 :: rest -> l1 :: removeDups (remove(l1, rest))
   | [] -> []
 
 (*
