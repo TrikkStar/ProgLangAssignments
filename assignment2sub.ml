@@ -37,12 +37,12 @@ let rec getnth ((n, lst): int * string list) =
 let rec lookup ((s, lst): string * (string * int) list) = 
   match lst with
   | l1 :: rest ->
-    match l1 with
-    | str :: n :: () -> expr
+    (match l1 with
+    | str, n ->
       if str = s
       then Some n
       else lookup (s, rest)
-    | [] -> lookup (s, rest)
+    | _ -> lookup (s, rest))
   | [] -> None
 
 (*
@@ -57,8 +57,8 @@ let rec lookup ((s, lst): string * (string * int) list) =
 let rec inPairs ((lst): int list) =
   match lst with
   | x :: y :: rest -> (x, y) :: inPairs(rest)
-  | _  :: () -> ()
-  | [] -> ()
+  | _  :: [] -> []
+  | [] -> []
 
 (*
    Write a function `flatten` that takes as input a list of lists of integers
@@ -67,16 +67,16 @@ let rec inPairs ((lst): int list) =
    flatten [[1; 2; 3]; []; [4; 5]; [6]] = [1; 2; 3; 4; 5; 6]
    It should have type: int list list -> int list
 *)
-
+(*
 let rec flatten ((lst): int list list) =
   match lst with
-  | l1 :: rest -> 
+  | l1 :: rest ->
     let rec flat ((ints): int list) = 
       match l1 with
       | num :: cont -> num :: flat cont
-      | [] -> flatten rest
+      | [] -> flatten (rest)
   | [] -> ()
-
+*)
 (*
    Write a function `remove` that takes as input a pair of an integer n and a
    list of integers, and removes from that list any occurrence of n.
@@ -89,7 +89,7 @@ let rec remove ((n, lst): int * int list) =
     if n = num
     then remove (n, rest)
     else num :: remove (n, rest)
-  | [] -> ()
+  | [] -> []
 
 (*
    Write a function `removeDups` that takes a list of integers and returns a
@@ -102,7 +102,7 @@ let rec remove ((n, lst): int * int list) =
 let rec removeDups ((lst): int list) = 
   match lst with
   | l1 :: rest -> l1 :: removeDupes (remove(l1, rest))
-  | [] -> ()
+  | [] -> []
 
 (*
    Write a function `collateSome` that takes as input a list of int options
@@ -116,7 +116,7 @@ let rec collateSome ((lst): int option list) =
   match lst with
   | Some l1 :: rest -> l1 :: collateSome rest
   | None :: rest -> collateSome rest
-  | [] -> ()
+  | [] -> []
 
 (*
    Write a function `unzip2` that takes as input a list of pairs of integers
@@ -127,10 +127,12 @@ let rec collateSome ((lst): int option list) =
 *)
 
 let rec unzip2 ((lst): (int * int) list) = 
-  let rec pair ((x, y): int * int) = stuff in 
+let pairL ((x, y): int * int) = x in
+let pairR ((a, b): int * int) = b in 
   match lst with
-  | l1 :: rest -> 
-  | [] -> ()
+  | l1 :: rest ->
+  	(pairL l1 :: unzip2 rest , pairR l1 :: unzip2 rest)
+  | [] -> []
 
 (*
    Write a function `makeChange` that takes as input a pair of an integer `n` and a
@@ -155,6 +157,6 @@ let rec makeChange ((n, lst): int * int list) =
     else makeChange (n, rest)
   | [] ->
     if n = 0
-    then ()
+    then []
     else None
 
