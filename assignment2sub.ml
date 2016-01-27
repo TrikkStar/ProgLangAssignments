@@ -148,7 +148,7 @@ let rec makeChange ((n, lst): int * int list) =
   match lst with
   | l1 :: rest -> 
     if l1 < n
-    then Some (l1 :: makeChange (n - l1, lst))
+    then l1 :: makeChange (n - l1, lst)
     else makeChange (n, rest)
   | [] ->
     if n = 0
