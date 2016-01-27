@@ -122,13 +122,12 @@ let rec collateSome ((lst): int option list) =
    It should have type: (int * int) list -> int list * int list
 *)
 
-let rec unzip2 ((lst): (int * int) list) = 
-let pairL ((x, y): int * int) = x in
-let pairR ((a, b): int * int) = b in 
-  match lst with
-  | l1 :: rest ->
-  	(pairL l1 :: unzip2 rest , pairR l1 :: unzip2 rest)
-  | [] -> []
+  let rec unzip2 ((lst): (int * int) list) = 
+	  match lst with
+	  | (x, y) :: rest -> 
+	    let l1, l2 = unzip2 rest in
+	    x :: l1, y :: l2
+    | [] -> ([], [])
 
 (*
    Write a function `makeChange` that takes as input a pair of an integer `n` and a
@@ -149,7 +148,7 @@ let rec makeChange ((n, lst): int * int list) =
   match lst with
   | l1 :: rest -> 
     if l1 < n
-    then Some l1 :: makeChange (n - l1, lst)
+    then Some (l1 :: makeChange (n - l1, lst))
     else makeChange (n, rest)
   | [] ->
     if n = 0
