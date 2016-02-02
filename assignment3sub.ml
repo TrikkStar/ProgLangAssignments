@@ -81,8 +81,8 @@ let result (chk) =
    Type: check -> bool
 *)
 
-
-
+let is_tie (chk) =
+   result chk = Tie
 
 (*
    Write a function `game_from_plays` that takes as input two plays (correspoding
