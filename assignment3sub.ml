@@ -92,6 +92,7 @@ let is_tie (chk) =
    Type: play * play -> game
 *)
 
+let rec game_from_plays (play1, play2) =
 
 
 (*
@@ -100,6 +101,7 @@ let is_tie (chk) =
    Type: game -> bool
 *)
 
+let rec valid_game (gme) =
 
 
 (*
@@ -107,6 +109,7 @@ let is_tie (chk) =
    Type: game -> result
 *)
 
+let play_game (gme) =
 
 (* --------------------------------------
             TEMPERATURES
