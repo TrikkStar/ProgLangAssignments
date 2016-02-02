@@ -52,7 +52,28 @@ type play = shape list
    Type: check -> result
 *)
 
-
+let result (chk) =
+   match chk with
+   | (arg1, arg2) ->
+      match arg1 with
+      | Rock ->
+         if arg2 = Rock
+         then Tie
+         else if arg2 = Paper
+            then SndWin
+            else FstWin
+      | Paper ->
+         if arg2 = Paper
+            then Tie
+            else if arg2 = Scissors
+               then SndWin
+               else FstWin
+      | Scissors ->
+         if arg2 = Scissors
+         then Tie
+         else if arg2 = Rock
+            then SndWin
+            else FstWin
 
 (*
    Write a function `is_tie` that takes as input a check and returns
@@ -135,6 +156,7 @@ type temp = C of float | F of float
    if the list is empty.
    Type: temp list -> temp
 *)
+
 (*
    Write a function `max_temp2` that behaves like `max_temp` but where all the
    recursive calls are tail calls. You will likely need to define an auxiliary
