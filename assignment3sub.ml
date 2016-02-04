@@ -108,6 +108,13 @@ let rec game_from_plays (play1, play2) =
 *)
 
 let rec valid_game (gme) =
+   match gme with
+   | [] -> false
+   | last :: [] -> not is_tie last
+   | head :: tail ->
+      if is_tie head
+      then valid_game tail
+      else false
 
 
 (*
