@@ -93,6 +93,12 @@ let is_tie (chk) =
 *)
 
 let rec game_from_plays (play1, play2) =
+   match () with
+   | ([], _ :: _)
+   | (_ :: _, [])
+   | ([], []) -> []
+   | (head1 :: tail1, head2 :: tail2) ->
+      (head1, head2) :: game_from_plays(tail1, tail2)
 
 
 (*
