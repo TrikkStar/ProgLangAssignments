@@ -148,10 +148,12 @@ let rec makeChange ((n, lst): int * int list) =
   match lst with
   | l1 :: rest -> 
     if l1 < n
-    then l1 :: makeChange (n - l1, lst)
+    then Some l1 :: makeChange (n - l1, lst)
     else makeChange (n, rest)
   | [] ->
     if n = 0
     then []
     else None
+  | Some stuff -> Some stuff
+  | None -> None
 
