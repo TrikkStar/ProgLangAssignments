@@ -152,9 +152,9 @@ type temp = C of float | F of float
 *)
 
 let to_f (tmp) = 
-	match tmp with
-	| C -> 1.8 *. tmp +. 32.0
-	| F -> tmp
+   match tmp with
+   | C -> 1.8 *. tmp +. 32.0
+   | F -> tmp
 
 (*
    Write a function `temp_compare` that takes as input a pair of temperatures and
@@ -164,9 +164,9 @@ let to_f (tmp) =
 *)
 
 let temp_compare (tmp1, tmp2) =
-	if tmp1 = tmp2
-	then 0
-	else if 
+   if tmp1 = tmp2
+   then 0
+   else if 
 
 (*
    Write a function `string_of_temp` that takes as input a temperature and
