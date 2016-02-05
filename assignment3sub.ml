@@ -123,6 +123,13 @@ let rec valid_game (gme) =
 *)
 
 let play_game (gme) =
+   if valid_game gme
+   then let rec find_last (g) =
+      (match g with
+      | head :: tail -> find_last tail
+      | last :: [] -> result last)
+      in find_last gme
+   else Tie
 
 (* --------------------------------------
             TEMPERATURES
