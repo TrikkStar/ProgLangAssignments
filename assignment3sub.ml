@@ -166,7 +166,9 @@ let to_f (tmp) =
 let temp_compare (tmp1, tmp2) =
    if tmp1 = tmp2
    then 0
-   else if 
+   else if tmp1 > tmp2
+      then 1
+      else -1
 
 (*
    Write a function `string_of_temp` that takes as input a temperature and
