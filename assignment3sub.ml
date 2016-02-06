@@ -52,7 +52,7 @@ type play = shape list
    Type: check -> result
 *)
 
-let result (chk) =
+let result ((chk): check) =
    match chk with
    | (arg1, arg2) ->
       match arg1 with
@@ -81,7 +81,7 @@ let result (chk) =
    Type: check -> bool
 *)
 
-let is_tie (chk) =
+let is_tie ((chk): check) =
    result chk = Tie
 
 (*
@@ -92,7 +92,7 @@ let is_tie (chk) =
    Type: play * play -> game
 *)
 
-let rec game_from_plays (play1, play2) =
+let rec game_from_plays ((play1, play2): play * play) =
    match (play1, play2) with
    | ([], _ :: _)
    | (_ :: _, [])
@@ -107,7 +107,7 @@ let rec game_from_plays (play1, play2) =
    Type: game -> bool
 *)
 
-let rec valid_game (gme) =
+let rec valid_game ((gme): game) =
    match gme with
    | [] -> false
    | last :: [] -> not is_tie last
@@ -122,7 +122,7 @@ let rec valid_game (gme) =
    Type: game -> result
 *)
 
-let play_game (gme) =
+let play_game ((gme): game) =
    if valid_game gme
    then let rec find_last (g) =
       (match g with
@@ -151,7 +151,7 @@ type temp = C of float | F of float
    Type: temp -> float
 *)
 
-let to_f (tmp) = 
+let to_f ((tmp): temp) =
    match tmp with
    | C -> 1.8 *. tmp +. 32.0
    | F -> tmp
@@ -163,7 +163,7 @@ let to_f (tmp) =
    Type: temp * temp -> int
 *)
 
-let temp_compare (tmp1, tmp2) =
+let temp_compare ((tmp1, tmp2): temp * temp) =
    if tmp1 = tmp2
    then 0
    else if tmp1 > tmp2
