@@ -199,5 +199,4 @@ let max_temp ((tmplst): temp list) =
    function and use state recursion.
 *)
 
-let max_temp2 ((tmplst): temp list) =
-   stuff
+let max_temp2 ((tmplst): temp list) = max_temp tmplst
