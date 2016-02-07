@@ -124,7 +124,7 @@ let rec valid_game ((gme): game) =
 
 let play_game ((gme): game) =
    if valid_game gme
-   then let rec find_last (g) =
+   then let rec find_last ((g): game) =
       match g with
       | last :: [] -> result last
       | head :: tail -> find_last tail
@@ -179,8 +179,7 @@ let temp_compare ((tmp1, tmp2): temp * temp) =
    Type: temp -> string
 *)
 
-
-
+let string_of_temp ((tmp): temp) = 
 
 (*
    Write a function `max_temp` that takes as input a list of temperatures and
@@ -188,6 +187,8 @@ let temp_compare ((tmp1, tmp2): temp * temp) =
    if the list is empty.
    Type: temp list -> temp
 *)
+
+
 
 (*
    Write a function `max_temp2` that behaves like `max_temp` but where all the
