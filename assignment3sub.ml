@@ -164,9 +164,9 @@ let to_f ((tmp): temp) =
 *)
 
 let temp_compare ((tmp1, tmp2): temp * temp) =
-   if tmp1 = tmp2
+   if to_f tmp1 = to_f tmp2
    then 0
-   else if tmp1 > tmp2
+   else if to_f tmp1 > to_f tmp2
       then 1
       else -1
 
