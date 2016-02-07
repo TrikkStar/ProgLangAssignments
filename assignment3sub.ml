@@ -125,9 +125,9 @@ let rec valid_game ((gme): game) =
 let play_game ((gme): game) =
    if valid_game gme
    then let rec find_last (g) =
-      (match g with
+      match g with
+      | last :: [] -> result last
       | head :: tail -> find_last tail
-      | last :: [] -> result last)
       in find_last gme
    else Tie
 
