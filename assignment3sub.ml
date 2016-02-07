@@ -180,6 +180,9 @@ let temp_compare ((tmp1, tmp2): temp * temp) =
 *)
 
 let string_of_temp ((tmp): temp) = 
+   match tmp with
+   | C var1 -> string_of_float var1 ^ "C"
+   | F var2 -> string_of_float var2 ^ "F"
 
 (*
    Write a function `max_temp` that takes as input a list of temperatures and
