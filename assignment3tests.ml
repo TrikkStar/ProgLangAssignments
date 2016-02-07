@@ -31,7 +31,8 @@ let t8b = string_of_temp (F 98.6) = "98.6F"
 
 let t9a = max_temp [F 2.1; C 2.1] = C 2.1
 let t9b = max_temp [F 2.1; C 2.1; F 98.6; C 100.0; F 145.3] = C 100.0
-let t9c = try (max_temp []; false)  with
+let t9c = max_temp [C 212.0; F 2.1; C 2.1; F 212.0; F 98.6; C 100.0; F 145.3] = C 212.0
+let t9d = try (max_temp []; false)  with
             | Failure "max_temp" -> true
             | _ -> false
 

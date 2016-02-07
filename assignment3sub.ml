@@ -191,7 +191,18 @@ let string_of_temp ((tmp): temp) =
    Type: temp list -> temp
 *)
 
-
+let max_temp ((tmplst): temp list) = 
+   match tmplst with
+   | [] -> raise (Failure "max_temp")
+   | head :: tail ->
+      let rec max ((tmp, lst): temp * temp list) =
+         match lst with
+         | [] -> tmp
+         | first :: rest ->
+            if temp_compare (tmp, first) > -1
+            then max (tmp, rest)
+            else max (first, rest)
+         in max (head, tail)
 
 (*
    Write a function `max_temp2` that behaves like `max_temp` but where all the
