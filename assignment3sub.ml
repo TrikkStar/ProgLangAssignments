@@ -54,26 +54,15 @@ type play = shape list
 
 let result ((chk): check) =
    match chk with
-   | (arg1, arg2) ->
-      match arg1 with
-      | Rock ->
-         if arg2 = Rock
-         then Tie
-         else if arg2 = Paper
-            then SndWin
-            else FstWin
-      | Paper ->
-         if arg2 = Paper
-            then Tie
-            else if arg2 = Scissors
-               then SndWin
-               else FstWin
-      | Scissors ->
-         if arg2 = Scissors
-         then Tie
-         else if arg2 = Rock
-            then SndWin
-            else FstWin
+   | (Rock, Paper) -> SndWin
+   | (Rock, Scissors) -> FstWin
+   | (Rock, Rock) -> Tie
+   | (Paper, Scissors) -> SndWin
+   | (Paper, Rock) -> FstWin
+   | (Paper, Paper) -> Tie
+   | (Scissors, Rock) -> SndWin
+   | (Scissors, Paper) -> FstWin
+   | (Scissors, Scissors) -> Tie
 
 (*
    Write a function `is_tie` that takes as input a check and returns
@@ -209,3 +198,6 @@ let max_temp ((tmplst): temp list) =
    recursive calls are tail calls. You will likely need to define an auxiliary
    function and use state recursion.
 *)
+
+let max_temp2 ((tmplst): temp list) =
+   stuff
