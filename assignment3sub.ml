@@ -180,7 +180,14 @@ let string_of_temp ((tmp): temp) =
    Type: temp list -> temp
 *)
 
-let max_temp ((tmplst): temp list) = stuff
+let rec max_temp ((tmplst): temp list) =
+   match tmplst with
+   | [] -> raise (Failure "max_temp")
+   | l1 :: [] -> l1
+   | head :: tail ->
+      if to_f head >= to_f max_temp tail
+      then head
+      else max_temp tail
 
 (*
    Write a function `max_temp2` that behaves like `max_temp` but where all the
