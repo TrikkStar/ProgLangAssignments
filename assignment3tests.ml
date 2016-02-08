@@ -39,5 +39,5 @@ let t9d = try (max_temp []; false)  with
 let t10a = max_temp2 [F 2.1; C 2.1] = C 2.1
 let t10b = max_temp2 [F 2.1; C 2.1; F 98.6; C 100.0; F 145.3] = C 100.0
 let t10c = try (max_temp2 []; false)  with
-            | Failure "max_temp" -> true
+            | Failure "max_temp2" -> true
             | _ -> false

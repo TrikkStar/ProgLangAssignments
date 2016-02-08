@@ -168,7 +168,7 @@ let temp_compare ((tmp1, tmp2): temp * temp) =
    Type: temp -> string
 *)
 
-let string_of_temp ((tmp): temp) = 
+let string_of_temp ((tmp): temp) =
    match tmp with
    | C var1 -> string_of_float var1 ^ "C"
    | F var2 -> string_of_float var2 ^ "F"
@@ -180,9 +180,17 @@ let string_of_temp ((tmp): temp) =
    Type: temp list -> temp
 *)
 
-let max_temp ((tmplst): temp list) = 
+let max_temp ((tmplst): temp list) = stuff
+
+(*
+   Write a function `max_temp2` that behaves like `max_temp` but where all the
+   recursive calls are tail calls. You will likely need to define an auxiliary
+   function and use state recursion.
+*)
+
+let max_temp2 ((tmplst): temp list) =
    match tmplst with
-   | [] -> raise (Failure "max_temp")
+   | [] -> raise (Failure "max_temp2")
    | head :: tail ->
       let rec max ((tmp, lst): temp * temp list) =
          match lst with
@@ -192,11 +200,3 @@ let max_temp ((tmplst): temp list) =
             then max (tmp, rest)
             else max (first, rest)
          in max (head, tail)
-
-(*
-   Write a function `max_temp2` that behaves like `max_temp` but where all the
-   recursive calls are tail calls. You will likely need to define an auxiliary
-   function and use state recursion.
-*)
-
-let max_temp2 ((tmplst): temp list) = max_temp tmplst
