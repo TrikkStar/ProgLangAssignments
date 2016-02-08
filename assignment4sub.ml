@@ -34,7 +34,7 @@ type 'a thunk = unit -> 'a
    It should have type: (unit -> 'a) -> 'a thunk
 *)
 
-
+let thunk func = stuff
 
 (*
    Write a function `thunk_of_value` that takes as input a value of type `'a` and
@@ -43,7 +43,7 @@ type 'a thunk = unit -> 'a
    Should have type: 'a -> 'a thunk
 *)
 
-
+let thunk_of_value valA = stuff
 
 (*
    Write a function `thunk_of_eval` that takes as input a pair of a function `'a -> 'b`
@@ -53,8 +53,7 @@ type 'a thunk = unit -> 'a
    It should have type: ('a -> 'b) * 'a -> 'a thunk
 *)
 
-
-
+let thunk_of_eval (func, valA) = stuff
 
 (*
    Write a function `try_thunk` that takes as input a `'a thunk` and returns a value of
@@ -65,7 +64,7 @@ type 'a thunk = unit -> 'a
    It should have type: 'a thunk -> 'a option
 *)
 
-
+let try_thunk thnk = stuff
 
 (*
    Write a function `thunk_of_pair` that takes as input a pair of thunks, and returns
@@ -75,7 +74,7 @@ type 'a thunk = unit -> 'a
    It should have type: 'a thunk * 'b thunk -> ('a * 'b) thunk
 *)
 
-
+let thunk_of_pair (thnk1, thnk2) = stuff
 
 (*
    Write a function `thunk_map` that takes as input a pair of a `'a thunk` and a
@@ -86,7 +85,7 @@ type 'a thunk = unit -> 'a
    It should have type: 'a thunk * ('a -> 'b) -> 'b thunk
 *)
 
-
+let thunk_map (thnk, func) = stuff
 
 (*
    Write a function `thunk_of_list` that takes as input a list of `'a thunk`s and
@@ -97,8 +96,7 @@ type 'a thunk = unit -> 'a
    It should have type: 'a thunk list -> 'a list thunk
 *)
 
-
-
+let thunk_of_list lst = stuff
 
 (* ----------------------------------------
                LOOKUP TABLES
@@ -150,7 +148,7 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table * symbol * 'a -> 'a table
 *)
 
-
+let insert (tabl, symbl, val) = stuff
 
 (*
    Write a function `has` that takes as input a pair of a symbol table and a symbol
@@ -161,7 +159,7 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table * symbol -> bool
 *)
 
-
+let has (tabl, symbl) = stuff
 
 (*
    Write a function `lookup` that takes as input a pair of a symbol table and a
@@ -173,7 +171,7 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table * symbol -> 'a
 *)
 
-
+let lookup (tabl, symbl) = stuff
 
 (*
    Write a function `lookup_opt` that takes as input a pair of a symbol table and a
@@ -185,7 +183,7 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table * symbol -> 'a option
 *)
 
-
+let lookup_opt (tabl, symbl) = stuff
 
 (*
    Write a function `delete` that takes as input a pair of a symbol table and a
@@ -195,7 +193,7 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table * symbol -> 'a table
 *)
 
-
+let delete (tabl, symbl) = stuff
 
 (*
    Write a function `keys` that takes as input a symbol table and returns a list
@@ -203,7 +201,7 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table -> symbol list
 *)
 
-
+let keys tabl = stuff
 
 (*
    Write a function `is_proper` that takes as input a symbol table and returns
@@ -212,3 +210,4 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table -> bool
 *)
 
+let is_proper tabl = stuff
