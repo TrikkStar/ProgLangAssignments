@@ -77,7 +77,7 @@ let try_thunk thnk =
    It should have type: 'a thunk * 'b thunk -> ('a * 'b) thunk
 *)
 
-let thunk_of_pair (thnk1, thnk2) = stuff
+let thunk_of_pair (thnk1, thnk2) = fun () -> (thnk1 (), thnk2 ())
 
 (*
    Write a function `thunk_map` that takes as input a pair of a `'a thunk` and a
