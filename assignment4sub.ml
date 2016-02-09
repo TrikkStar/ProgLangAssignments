@@ -34,7 +34,7 @@ type 'a thunk = unit -> 'a
    It should have type: (unit -> 'a) -> 'a thunk
 *)
 
-let thunk func = stuff
+let thunk func = func
 
 (*
    Write a function `thunk_of_value` that takes as input a value of type `'a` and
