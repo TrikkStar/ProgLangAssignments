@@ -43,7 +43,7 @@ let thunk func = func
    Should have type: 'a -> 'a thunk
 *)
 
-let thunk_of_value valA = stuff
+let thunk_of_value valA = fun () -> valA
 
 (*
    Write a function `thunk_of_eval` that takes as input a pair of a function `'a -> 'b`
