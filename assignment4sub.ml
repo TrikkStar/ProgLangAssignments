@@ -148,7 +148,7 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table * symbol * 'a -> 'a table
 *)
 
-let insert (tabl, symbl, val) = stuff
+let insert (tabl, symbl, value) = stuff
 
 (*
    Write a function `has` that takes as input a pair of a symbol table and a symbol
