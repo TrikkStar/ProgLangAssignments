@@ -53,7 +53,7 @@ let thunk_of_value valA = fun () -> valA
    It should have type: ('a -> 'b) * 'a -> 'a thunk
 *)
 
-let thunk_of_eval (func, valA) = func valA
+let thunk_of_eval (func, valA) = fun () -> func valA
 
 (*
    Write a function `try_thunk` that takes as input a `'a thunk` and returns a value of
