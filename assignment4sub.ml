@@ -65,7 +65,7 @@ let thunk_of_eval (func, valA) = fun () -> func valA
 *)
 
 let try_thunk thnk =
-   try thnk () with
+   try Some (thnk ()) with
    | Failure _ -> None
 
 (*
@@ -102,7 +102,7 @@ let thunk_of_list lst = fun () ->
    let rec recursor (x) =
       match x with
       | [] -> ()
-      |  head :: tail -> head () recursor tail
+      | head :: tail -> (head; recursor tail)
    in recursor lst
 
 (* ----------------------------------------
