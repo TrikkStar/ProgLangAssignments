@@ -15,6 +15,7 @@ let t3a = try (try (thunk_of_eval ((fun x -> raise (Failure "")), 4))
           with Failure "" -> true
              | _ -> false
 let t3b = thunk_of_eval ((fun x -> x + 1), 5) () = 6
+let t3c = thunk_of_eval ((fun x -> "Bacon & " ^ x), "Eggs") () = "Bacon & Eggs"
 
 let t4a = try_thunk (fun () -> raise (Failure "hi")) = None
 let t4b = try_thunk (fun () -> 5) = Some 5
