@@ -8,6 +8,7 @@ let t1b = (thunk (fun () -> 5)) () = 5
 let t1c = (thunk (fun () -> "Bacon")) () = "Bacon"
 
 let t2a = (thunk_of_value 4) () = 4
+let t2b = (thunk_of_value "Bacon") () = "Bacon"
 
 let t3a = try (try (thunk_of_eval ((fun x -> raise (Failure "")), 4))
                with Failure "" -> (fun () -> false)) ()
