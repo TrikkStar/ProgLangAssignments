@@ -4,8 +4,8 @@ let t1a = let f = fun () -> raise (Failure "")
           in try (try (thunk f) with Failure "" -> (fun () -> false)) ()
              with Failure "" -> true
                 | _ -> false
-
 let t1b = (thunk (fun () -> 5)) () = 5
+let t1c = (thunk (fun () -> "Bacon")) () = "Bacon"
 
 let t2a = (thunk_of_value 4) () = 4
 
