@@ -67,7 +67,6 @@ let thunk_of_eval (func, valA) = fun () -> func valA
 let try_thunk thnk =
    try thnk () with
    | Failure _ -> None
-   | value -> Some value
 
 (*
    Write a function `thunk_of_pair` that takes as input a pair of thunks, and returns
