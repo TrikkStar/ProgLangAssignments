@@ -35,6 +35,7 @@ let t6a = let f = fun () -> raise (Failure "")
              with Failure "" -> true
                 | _ -> false
 let t6b = thunk_map ((fun () -> 4), (fun x -> 2 * x)) () = 8
+let t6c = thunk_map ((fun () -> "Eggs"), (fun x -> "Bacon & " ^ x)) () = "Bacon & Eggs"
 
 let t7a = let f = fun () -> raise (Failure "")
           in try (try thunk_of_list [f; f]
