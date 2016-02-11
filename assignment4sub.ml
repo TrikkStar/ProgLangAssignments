@@ -174,7 +174,15 @@ let rec insert (tabl, symbl, value) =
    It should have type: 'a table * symbol -> bool
 *)
 
-let has (tabl, symbl) = stuff
+let rec has (tabl, symbl) =
+   match tabl with
+   | [] -> false
+   | (key, _) :: rest ->
+      if key = symbl
+      then true
+      else if symbl > key
+         then false
+         else has (rest, symbl)
 
 (*
    Write a function `lookup` that takes as input a pair of a symbol table and a
