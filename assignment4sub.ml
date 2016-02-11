@@ -214,7 +214,15 @@ let rec lookup (tabl, symbl) =
    It should have type: 'a table * symbol -> 'a option
 *)
 
-let lookup_opt (tabl, symbl) = stuff
+let rec lookup_opt (tabl, symbl) =
+   match tabl with
+   | [] -> None
+   | (key, val1) :: rest ->
+      if key = symbl
+      then Some val1
+      else if symbl > key
+         then Some (lookup (rest, symbl))
+         else None
 
 (*
    Write a function `delete` that takes as input a pair of a symbol table and a
