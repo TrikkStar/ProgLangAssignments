@@ -200,7 +200,7 @@ let rec lookup (tabl, symbl) =
    | (key, val1) :: rest ->
       if key = symbl
       then val1
-      else if symbl < key
+      else if symbl > key
          then lookup (rest, symbl)
          else raise Not_found
 
