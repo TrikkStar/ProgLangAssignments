@@ -73,6 +73,8 @@ let t11b = lookup_opt ([("foo", 2); ("bar", 3)], "bar") = None
 let t11c = lookup_opt ([("bar", 3); ("baz", 1); ("egg", 7); ("foo", 2)], "foo") = Some 2
 
 let t12a = delete ([("bar", 3); ("baz", 1); ("foo", 2)], "bar") = [("baz", 1); ("foo", 2)]
+let t12b = delete ([("bar", 3); ("baz", 1); ("egg", 7); ("foo", 2)], "egg") = [("bar", 3); ("baz", 1); ("foo", 2)]
+let t12c = delete ([("bar", 3); ("baz", 1); ("foo", 2)], "cow") = [("bar", 3); ("baz", 1); ("foo", 2)]
 
 let t13a = keys [("bar", 3); ("foo", 2)] = ["bar"; "foo"]
 
