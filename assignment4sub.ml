@@ -248,7 +248,10 @@ let rec delete (tabl, symbl) =
    It should have type: 'a table -> symbol list
 *)
 
-let keys tabl = stuff
+let rec keys tabl =
+   match tabl with
+   | [] -> []
+   | (key, _) :: rest -> key :: keys rest
 
 (*
    Write a function `is_proper` that takes as input a symbol table and returns
