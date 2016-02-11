@@ -44,6 +44,9 @@ let t7a = let f = fun () -> raise (Failure "")
                 | _ -> false
 let t7b = let f = fun () -> 5
           in thunk_of_list [f; f] () = [5; 5]
+let t7c = let f = fun () -> "Bacon"
+          in let e = fun () -> "& Eggs"
+          in thunk_of_list [f; e] () = ["Bacon"; "& Eggs"]
 
 let t8a = insert (empty, "foo", 3) = [("foo", 3)]
 
