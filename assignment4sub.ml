@@ -155,7 +155,15 @@ let empty : 'a table = []   (* A more intuitive notation for the empty list/tabl
    It should have type: 'a table * symbol * 'a -> 'a table
 *)
 
-let insert (tabl, symbl, value) = stuff
+let rec insert (tabl, symbl, value) =
+   match tabl with
+   | [] -> (symbl, value) :: []
+   | (key, val1) :: rest ->
+      if symbl = key
+      then (symbl, value) :: rest
+      else if symbl < key
+         then (symbl, value) :: (key, val1) :: rest
+         else (key, val1) :: insert (rest, symbl, value)
 
 (*
    Write a function `has` that takes as input a pair of a symbol table and a symbol
