@@ -49,6 +49,8 @@ let t7c = let f = fun () -> "Bacon"
           in thunk_of_list [f; e] () = ["Bacon"; "& Eggs"]
 
 let t8a = insert (empty, "foo", 3) = [("foo", 3)]
+let t8b = insert ([("bar", 3); ("baz", 1); ("foo", 2)], "cow", 7) = [("bar", 3); ("baz", 1); ("cow", 7); ("foo", 2)]
+let t8c = insert ([("bar", 3); ("baz", 1); ("foo", 2)], "baz", 42) = [("bar", 3); ("baz", 42); ("foo", 2)]
 
 let t9a = has ([("foo", 2)], "foo") = true
 
