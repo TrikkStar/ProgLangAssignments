@@ -232,7 +232,15 @@ let rec lookup_opt (tabl, symbl) =
    It should have type: 'a table * symbol -> 'a table
 *)
 
-let delete (tabl, symbl) = stuff
+let rec delete (tabl, symbl) =
+   match tabl with
+   | [] -> []
+   | (key, val1) :: rest ->
+      if symbl = key
+      then rest
+      else if symbl < key
+         then (key, val1) :: delete (rest, symbl)
+         else rest
 
 (*
    Write a function `keys` that takes as input a symbol table and returns a list
