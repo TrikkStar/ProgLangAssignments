@@ -238,9 +238,9 @@ let rec delete (tabl, symbl) =
    | (key, val1) :: rest ->
       if symbl = key
       then rest
-      else if symbl < key
-         then (key, val1) :: delete (rest, symbl)
-         else rest
+      else if key > symbl
+         then tabl
+         else (key, val1) :: delete (rest, symbl)
 
 (*
    Write a function `keys` that takes as input a symbol table and returns a list
