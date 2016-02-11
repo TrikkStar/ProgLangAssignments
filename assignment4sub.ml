@@ -98,12 +98,12 @@ let thunk_map (thnk, func) = fun () -> func (thnk ())
    It should have type: 'a thunk list -> 'a list thunk
 *)
 
-let thunk_of_list lst = fun () ->
-   let rec recursor (x) =
+let thunk_of_list lst =
+   let rec recursor x =
       match x with
-      | [] -> ()
-      | head :: tail -> (head; recursor tail)
-   in recursor lst
+      | [] -> []
+      | head :: tail -> head () :: recursor tail
+   in fun () -> recursor lst
 
 (* ----------------------------------------
                LOOKUP TABLES
