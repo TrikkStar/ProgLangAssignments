@@ -77,5 +77,7 @@ let t12b = delete ([("bar", 3); ("baz", 1); ("egg", 7); ("foo", 2)], "egg") = [(
 let t12c = delete ([("bar", 3); ("baz", 1); ("foo", 2)], "cow") = [("bar", 3); ("baz", 1); ("foo", 2)]
 
 let t13a = keys [("bar", 3); ("foo", 2)] = ["bar"; "foo"]
+let t13b = keys [] = []
+
 
 let t14a = is_proper [("bar", 3); ("foo", 2)] = true
