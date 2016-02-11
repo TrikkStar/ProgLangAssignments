@@ -260,4 +260,10 @@ let rec keys tabl =
    It should have type: 'a table -> bool
 *)
 
-let is_proper tabl = stuff
+let rec is_proper tabl =
+   match tabl with
+   | _ :: [] | [] -> true
+   | (key1, _) :: (key2, valx) :: rest ->
+      if key1 < key2
+      then is_proper ((key2, valx) :: rest)
+      else false
