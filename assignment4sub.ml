@@ -194,7 +194,15 @@ let rec has (tabl, symbl) =
    It should have type: 'a table * symbol -> 'a
 *)
 
-let lookup (tabl, symbl) = stuff
+let rec lookup (tabl, symbl) =
+   match tabl with
+   | [] -> raise Not_found
+   | (key, val1) :: rest ->
+      if key = symbl
+      then val1
+      else if symbl < key
+         then lookup (rest, symbl)
+         else raise Not_found
 
 (*
    Write a function `lookup_opt` that takes as input a pair of a symbol table and a
