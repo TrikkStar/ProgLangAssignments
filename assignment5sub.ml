@@ -66,6 +66,12 @@ let has_vars (clc) =
    It should have type: calc -> int
 *)
 
+let count_vars (clc) =
+   match clc with
+   | Add (Var, _) | Add (_, Var) | Sub (Var, _) | Sub (_, Var)
+   | Mul (Var, _) | Mul (_, Var) | Parity (Var) | Var -> 1
+   | Add (Var, Var) | Sub (Var, Var) | Mul (Var, Var) -> 2
+   | _ -> 0
 
 (*
    Write a function `calc_eval` that takes as input a pair of a calculation and an
