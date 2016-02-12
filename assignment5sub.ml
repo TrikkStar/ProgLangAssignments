@@ -48,6 +48,14 @@ type calc = Var
    It should have type calc -> bool
 *)
 
+let has_vars (clc) = 
+   match clc with
+   | Int _
+   | Add _
+   | Sub _
+   | Mul _
+   | Pairity _ -> true
+   | _ -> false
 
 (*
    Write a function `count_vars` that takes as input a calculation and returns the
