@@ -80,6 +80,14 @@ let count_vars (clc) =
    It should have type: calc * int -> int
 *)
 
+let calc_eval (clc, intX) =
+   match clc with
+   | Var -> intX
+   | Int y -> y
+   | Add (a, b) ->
+   | Sub (a, b) ->
+   | Mul (a, b) ->
+   | Parity (valX) -> 
 
 
 (*
