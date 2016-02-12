@@ -50,11 +50,14 @@ type calc = Var
 
 let has_vars (clc) = 
    match clc with
-   | Int _
-   | Add _
-   | Sub _
-   | Mul _
-   | Pairity _ -> true
+   | Add (Var, _)
+   | Add (_, Var)
+   | Sub (Var, _)
+   | Sub (_, Var)
+   | Mul (Var, _)
+   | Mul (_, Var)
+   | Parity (Var)
+   | Var -> true
    | _ -> false
 
 (*
