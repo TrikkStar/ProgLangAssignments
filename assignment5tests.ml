@@ -7,6 +7,8 @@ let t8e = not (has_vars (Parity (Int 9)))
 
 let t9a = count_vars (Add (Var, Int 2)) = 1
 let t9b = count_vars (Add (Int 1, Int 2)) = 0
+let t9c = count_vars (Mul (Var, Var)) = 2
+let t9d = count_vars (Var) = 1
 
 let t10a = calc_eval (Add (Var, Int 2), 3) = 5
 
