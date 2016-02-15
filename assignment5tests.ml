@@ -11,6 +11,11 @@ let t9c = count_vars (Mul (Var, Var)) = 2
 let t9d = count_vars (Var) = 1
 
 let t10a = calc_eval (Add (Var, Int 2), 3) = 5
+let t10b = calc_eval (Sub (Var, Int 3), 7) = 4
+let t10c = calc_eval (Mul (Var, Var), 5) = 25
+let t10d = calc_eval (Var, 42) = 42
+let t10e = calc_eval (Parity Var, 37) = 1
+let t10f = calc_eval (Parity Var, (-40)) = 0
 
 let t11a = func_of_calc (Add (Var, Int 2)) 3 = 5
 
