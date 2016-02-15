@@ -68,9 +68,9 @@ let has_vars (clc) =
 
 let count_vars (clc) =
    match clc with
+   | Add (Var, Var) | Sub (Var, Var) | Mul (Var, Var) -> 2
    | Add (Var, _) | Add (_, Var) | Sub (Var, _) | Sub (_, Var)
    | Mul (Var, _) | Mul (_, Var) | Parity (Var) | Var -> 1
-   | Add (Var, Var) | Sub (Var, Var) | Mul (Var, Var) -> 2
    | _ -> 0
 
 (*
@@ -80,14 +80,14 @@ let count_vars (clc) =
    It should have type: calc * int -> int
 *)
 
-let calc_eval (clc, intX) =
+let rec calc_eval (clc, intX) =
    match clc with
    | Var -> intX
    | Int y -> y
-   | Add (a, b) ->
-   | Sub (a, b) ->
-   | Mul (a, b) ->
-   | Parity (valX) -> 
+   | Add (a, b) -> calc_eval (a, intX) + calc_eval (b, intX)
+   | Sub (a, b) -> calc_eval (a, intX) - calc_eval (b, intX)
+   | Mul (a, b) -> calc_eval (a, intX) * calc_eval (b, intX)
+   | Parity (valX) -> abs (calc_eval (valX, intX)) mod 2
 
 
 (*
