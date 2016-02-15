@@ -48,7 +48,7 @@ type calc = Var
    It should have type calc -> bool
 *)
 
-let has_vars (clc) = 
+let has_vars clc = 
    match clc with
    | Add (Var, _)
    | Add (_, Var)
@@ -66,7 +66,7 @@ let has_vars (clc) =
    It should have type: calc -> int
 *)
 
-let count_vars (clc) =
+let count_vars clc =
    match clc with
    | Add (Var, Var) | Sub (Var, Var) | Mul (Var, Var) -> 2
    | Add (Var, _) | Add (_, Var) | Sub (Var, _) | Sub (_, Var)
@@ -99,7 +99,7 @@ let rec calc_eval (clc, intX) =
    (though the parentheses will not show)
 *)
 
-
+let func_of_calc clc = fun (intX) -> calc_eval (clc, intX)
 
 (*
    Write a function `subst` that takes as input a pair of calculations (c1, c2)
