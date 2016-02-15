@@ -108,7 +108,10 @@ let func_of_calc clc = fun (intX) -> calc_eval (clc, intX)
    It should have type: calc * calc -> calc
 *)
 
-
+let subst (clc1, clc2) =
+   if has_vars clc2
+   then 
+   else
 
 (*
    Write a function `power` that takes as input a pair of a calculation and an
