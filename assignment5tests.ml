@@ -18,6 +18,9 @@ let t10e = calc_eval (Parity Var, 37) = 1
 let t10f = calc_eval (Parity Var, (-40)) = 0
 
 let t11a = func_of_calc (Add (Var, Int 2)) 3 = 5
+let t11b = func_of_calc (Mul (Var, Var)) 5 = 25
+let t11c = func_of_calc (Sub (Var, Int 1)) 7 = 6
+let t11d = func_of_calc (Parity Var) 37 = 1
 
 let t12a = subst (Add (Var, Int 1), Mul (Var, Var)) =
                 Mul (Add (Var, Int 1), Add (Var, Int 1))
