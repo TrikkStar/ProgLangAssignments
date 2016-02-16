@@ -109,9 +109,19 @@ let func_of_calc clc = fun (intX) -> calc_eval (clc, intX)
 *)
 
 let subst (clc1, clc2) =
-   if has_vars clc2
-   then 
-   else
+   match clc2 with
+   | Add (Var, Var) -> Add (clc1, clc1)
+   | Sub (Var, Var) -> Sub (clc1, clc1)
+   | Mul (Var, Var) -> Mul (clc1, clc1)
+   | Add (Var, x) -> Add (clc1, x)
+   | Add (x, Var) -> Add (x, clc1)
+   | Sub (Var, x) -> Sub (clc1, x)
+   | Sub (x, Var) -> Sub (x, clc1)
+   | Mul (Var, x) -> Mul (clc1, x)
+   | Mul (x, Var) -> Mul (x, clc1)
+   | Parity Var -> Parity clc1
+   | Var -> clc1
+   | _ -> clc2
 
 (*
    Write a function `power` that takes as input a pair of a calculation and an
