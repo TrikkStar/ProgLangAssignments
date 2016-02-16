@@ -34,6 +34,7 @@ let t13a = power (Var, 3) = Mul (Mul (Var, Var), Var)
 let t13b = power (Var, 0) = Int 1
 let t13c = power (Var, 1) = Var
 let t13d = power (Var, 6) = Mul (Mul (Mul (Mul (Mul (Var, Var), Var), Var), Var), Var)
+let t13e = power (Int 7, 7) = Mul (Mul (Mul (Mul (Mul (Mul (Int 7, Int 7), Int 7), Int 7), Int 7), Int 7), Int 7)
 
 let t14a = term (2, 1) = Mul(Int 2, Var)
 
