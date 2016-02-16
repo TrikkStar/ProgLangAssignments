@@ -158,6 +158,11 @@ let power (clc, n) =
    It should have type: int * int -> calc
 *)
 
+let term (a, n) =
+   match (a, n) with
+   | (0, _) -> Int 0
+   | (1, _) | (_, 0) -> Int 1
+   | (x, y) -> Mul (Int a, power (Var, n))
 
 (*
    Write a function `poly` that takes as input a list of pairs of integers
