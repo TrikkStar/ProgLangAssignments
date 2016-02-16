@@ -143,9 +143,8 @@ let power (clc, n) =
       else let rec recursor (clcX, x) =
             if x = 2
             then Mul (clcX, clcX)
-            else Mul (recursor (clcx, x-1), clcX)
+            else Mul (recursor (clcX, x-1), clcX)
          in recursor (clc, n)
-
 
 (*
    Write a function `term` that takes as input a pair of integers `(a, n)` and
