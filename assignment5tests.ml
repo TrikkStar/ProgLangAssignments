@@ -24,6 +24,11 @@ let t11d = func_of_calc (Parity Var) 37 = 1
 
 let t12a = subst (Add (Var, Int 1), Mul (Var, Var)) =
                 Mul (Add (Var, Int 1), Add (Var, Int 1))
+let t12b = subst (Add (Var, Int 1), Parity Var) = Parity (Add (Var, Int 1))
+let t12c = subst (Add (Var, Int 1), Sub (Int 2, Var)) = 
+				Sub (Int 2, Add (Var, Int 1))
+let t12d = subst (Add (Var, Int 1), Var) = Add (Var, Int 1)
+let t12e = subst (Add (Var, Int 1), Int 42) = Int 42
 
 let t13a = power 3 = Mul (Mul (Var, Var), Var)
 
