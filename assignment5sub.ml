@@ -135,17 +135,13 @@ let subst (clc1, clc2) =
    It should have type: calc * int -> calc
 *)
 
-let power (clc, n) = 
-   if n = 0
-   then Int 1
-   else if n = 1
-      then clc
-      else let rec recursor (clcX, x) =
-            if x = 2
-            then Mul (clcX, clcX)
-            else Mul (recursor (clcX, x-1), clcX)
-         in recursor (clc, n)
-
+let rec power (clc, n) =
+   match n with
+   | 0 -> Int 1
+   | 1 -> clc
+   | 2 -> Mul (clc, clc)
+   | x -> Mul (power (clc, (x-1)), clc)
+   
 (*
    Write a function `term` that takes as input a pair of integers `(a, n)` and
    returns the calculation representing the "term" `a * x^n` ("a" times the
