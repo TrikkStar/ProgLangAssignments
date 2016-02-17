@@ -140,7 +140,7 @@ let rec power (clc, n) =
    | 0 -> Int 1
    | 1 -> clc
    | 2 -> Mul (clc, clc)
-   | x -> Mul (power (clc, (x-1)), clc)
+   | x -> Mul (power (clc, (x - 1)), clc)
 
 (*
    Write a function `term` that takes as input a pair of integers `(a, n)` and
@@ -235,18 +235,37 @@ let rec poly lst =
    Make sure to preserve the order of terms on this step.
 
 *)
-(* This function stub is commented out for now so as not to throw errors when
-   you work on the previous part. Delete the comment part when you want to start
-   working on this function.
 
 let rec simplify c =
    let c' =
       match c with
-      | Var -> ...        (* this one's easy *)
-      | Int i -> ...      (* so is this *)
-      | Add ... -> ...    (* special add case here *)
-      | Add (c1, c2) -> Add (simplify c1, simplify c2)
-   (* more cases here. Do not use the catchall *)
+      | Var -> Var        
+      | Int i -> Int i      
+      | Add (Int x, Int y) -> Int (x + y)
+      | Add (Int 0, x) | Add (x, Int 0) | Sub (x, Int 0) -> x
+      | Mul (Int 1, x) | Mul (x, Int 1) -> x
+      | Mul (Int 0, _) | Mul (_, Int 0) -> Int 0
+      | Sub (x, Int y) -> Add (x, Int (-y))
+      | Add (x, Int y) -> Add (Int y, x)
+      | Mul (Var, Int x) -> Mul (Int x, Var)
+      | Mul (Add (c1, c2), Int y) -> Mul (Int y, Add (c1, c2))
+      | Mul (Sub (c1, c2), Int y) -> Mul (Int y, Sub (c1, c2))
+      | Mul (Mul (c1, c2), Int y) -> Mul (Int y, Mul (c1, c2))
+      | Mul (Parity x, Int y) -> Mul (Int y, Parity x)
+      | Add (x, Add (y, z)) -> Add (Add (x, y), z)
+      | Mul (x, Mul (y, z)) -> Mul (Mul (x, y), z)
+      | Add (Mul (a, b), Mul (a', c)) -> 
+         if a = a' || b = c 
+         then Mul (a, Add (b, c))
+         else Add (Mul (a, b), Mul (a', c))
+      | Add (c1, c2) -> 
+         if c1 = c2
+         then Mul (Int 2, c1)
+         else Add (simplify c1, simplify c2)
+      | Sub (c1, c2) -> 
+         if c1 = c2
+         then Int 0
+         else Sub (simplify c1, simplify c2)
+      | Mul (c1, c2) -> Mul (simplify c1, simplify c2)
+      | Parity c1 -> Parity (simplify c1)
    in if c' = c then c' else simplify c'
-
-*)
