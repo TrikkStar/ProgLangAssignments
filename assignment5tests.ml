@@ -55,3 +55,6 @@ let t15g = poly [(0, 1); (2, 1)] = term (2, 1)
 let t16a = simplify (Add (Int 0, Var)) = Var
 let t16b = simplify (Add (Int 3, Int 4)) = Int 7
 let t16c = calc_eval (simplify (poly [(2, 1); (1, 0)]), 3) = 7
+let t16d = simplify (Mul (Var, Int 0)) = Int 0
+let t16e = simplify (Sub (Mul (Var, Int 3), Int 7)) = Add( Int (-7), Mul (Int 3, Var))
+

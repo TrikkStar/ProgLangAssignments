@@ -130,7 +130,7 @@ let subst (clc1, clc2) =
    you must ensure the multiplications occur in a left-associative way. For example
    `power (Var, 3)` should produce `Mul (Mul(Var, Var), Var)`.
    You can assume the integer is non-negative, but your code should properly handle
-   the special cases of n = 0, when the result should be the calculation of 1, and
+   the special cases of n = 0, when the result should be the calculation o7f 1, and
    n = 1, when the result should be the calculation itself.
    It should have type: calc * int -> calc
 *)
