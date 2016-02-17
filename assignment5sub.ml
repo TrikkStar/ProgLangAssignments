@@ -255,9 +255,11 @@ let rec simplify c =
       | Add (x, Add (y, z)) -> Add (Add (x, y), z)
       | Mul (x, Mul (y, z)) -> Mul (Mul (x, y), z)
       | Add (Mul (a, b), Mul (a', c)) -> 
-         if a = a' || b = c 
+         if a = a'
          then Mul (a, Add (b, c))
-         else Add (Mul (a, b), Mul (a', c))
+         else if b = c
+            then Mul (Add (a, a'), b)
+            else Add (Mul (a, b), Mul (a', c))
       | Add (Mul (a, b), c) ->
          if b = c
          then Mul ( Add (a, Int 1), b)
