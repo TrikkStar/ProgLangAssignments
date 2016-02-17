@@ -258,6 +258,18 @@ let rec simplify c =
          if a = a' || b = c 
          then Mul (a, Add (b, c))
          else Add (Mul (a, b), Mul (a', c))
+      | Add (Mul (a, b), c) ->
+         if b = c
+         then Mul ( Add (a, Int 1), b)
+         else if a = c
+            then Mul ( Add (b, Int 1), a)
+            else Add (Mul (a, b), c)
+      | Add (a, Mul (b, c)) ->
+         if a = c
+         then Mul ( Add (b, Int 1), c)
+         else if a = b
+            then Mul ( Add (c, Int 1), a)
+            else Add (a, Mul (b, c))
       | Add (c1, c2) -> 
          if c1 = c2
          then Mul (Int 2, c1)
