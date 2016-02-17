@@ -99,7 +99,7 @@ let rec calc_eval (clc, intX) =
    (though the parentheses will not show)
 *)
 
-let func_of_calc clc = fun (intX) -> calc_eval (clc, intX)
+let func_of_calc clc = fun intX -> calc_eval (clc, intX)
 
 (*
    Write a function `subst` that takes as input a pair of calculations (c1, c2)
@@ -141,7 +141,7 @@ let rec power (clc, n) =
    | 1 -> clc
    | 2 -> Mul (clc, clc)
    | x -> Mul (power (clc, (x-1)), clc)
-   
+
 (*
    Write a function `term` that takes as input a pair of integers `(a, n)` and
    returns the calculation representing the "term" `a * x^n` ("a" times the
@@ -179,7 +179,13 @@ let term (a, n) =
    It should have type: (int * int) list -> calc
 *)
 
-
+let rec poly lst =
+   match lst with
+   | [] -> Int 0
+   | (a, n) :: (0, _) :: [] -> term (a, n)
+   | (a, n) :: [] -> term (a, n)
+   | (0, n) :: rest -> poly rest
+   | (a, n) :: rest -> Add (term (a, n), poly rest)
 
 (*
    This is a difficult problem, with many objectives. Do as much of it as you can.
