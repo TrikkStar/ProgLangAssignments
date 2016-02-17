@@ -33,10 +33,16 @@ let t12e = subst (Add (Var, Int 1), Int 42) = Int 42
 let t13a = power (Var, 3) = Mul (Mul (Var, Var), Var)
 let t13b = power (Var, 0) = Int 1
 let t13c = power (Var, 1) = Var
-let t13d = power (Var, 6) = Mul (Mul (Mul (Mul (Mul (Var, Var), Var), Var), Var), Var)
-let t13e = power (Int 7, 7) = Mul (Mul (Mul (Mul (Mul (Mul (Int 7, Int 7), Int 7), Int 7), Int 7), Int 7), Int 7)
+let t13d = power (Var, 6) = 
+				Mul (Mul (Mul (Mul (Mul (Var, Var), Var), Var), Var), Var)
+let t13e = power (Int 7, 7) = 
+		Mul (Mul (Mul (Mul (Mul (Mul (Int 7, Int 7), Int 7), Int 7), Int 7), Int 7), Int 7)
 
-let t14a = term (2, 1) = Mul(Int 2, Var)
+let t14a = term (2, 1) = Mul (Int 2, Var)
+let t14b = term (0, 7) = Int 0
+let t14c = term (7, 0) = Int 1
+let t14d = term (1, 3) = Int 1
+let t14e = term (5, 4) = Mul (Int 5, Mul (Mul (Mul (Var, Var), Var), Var))
 
 let t15a = poly [(2, 1); (1, 4)] = Add (term (2, 1), term (1, 4))
 let t15b = poly [(2, 1); (0, 2); (1, 4)] = Add (term (2, 1), term (1, 4))
