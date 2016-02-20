@@ -118,6 +118,12 @@ let from_f func =
    It should have type `'a list -> 'a stream`.
 *)
 
+let from_list lst = 
+   let rec recursor listX = 
+      match listX with
+      | [] -> recursor lst
+      | head :: rest -> St( fun () -> (head, recursor rest))
+   in recursor lst
 
 (* Stream users. These functions take as input a stream, and either produce some value
    or a new stream.

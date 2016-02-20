@@ -19,6 +19,7 @@ let t4b = try (ignore (from_f (fun _ -> raise (Failure ""))); true) with
 let t4c = take 5 (from_f (fun x -> x + x)) = [2; 4; 6; 8; 10]
 
 let t5a = take 5 (from_list [3; 5; 6]) = [3; 5; 6; 3; 5]
+let t5b = take 5 (from_list [1]) = [1; 1; 1; 1; 1]
 
 let t6a = take 3 (drop 3 (seq 2 6)) = [20; 26; 32]
 
