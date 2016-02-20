@@ -97,6 +97,7 @@ let rec alt val1 (val2) = St(fun () -> (val1, alt val2 (val1)))
    It should have type `int -> int -> int stream`
 *)
 
+let rec seq a (step) = St(fun () -> (a, seq (a + step) step))
 
 (*
    Write a function `from_f` that takes as input a function `int -> 'a` and returns

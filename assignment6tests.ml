@@ -8,6 +8,8 @@ let t2b = take (-1) (alt 4 5) = []
 let t2c = take 4 (alt 6 7) = [6; 7; 6; 7]
 
 let t3a = take 3 (seq 2 6) = [2; 8; 14]
+let t3b = take 10 (seq 1 1) = [1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
+let t3c = take 5 (seq 3 (-2)) = [3; 1; (-1); (-3); (-5)]
 
 let t4a = take 5 (from_f (fun x -> x * x)) = [1; 4; 9; 16; 25]
 (* The next test ensures that the function is not called until the corresponding
