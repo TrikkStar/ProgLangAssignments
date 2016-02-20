@@ -4,6 +4,8 @@ let t1b = take 0 (const 3) = []
 let t1c = take 10 (const 1) = [1; 1; 1; 1; 1; 1; 1; 1; 1; 1]
 
 let t2a = take 5 (alt 3 4) = [3; 4; 3; 4; 3]
+let t2b = take (-1) (alt 4 5) = []
+let t2c = take 4 (alt 6 7) = [6; 7; 6; 7]
 
 let t3a = take 3 (seq 2 6) = [2; 8; 14]
 

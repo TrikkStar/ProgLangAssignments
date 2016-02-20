@@ -88,7 +88,7 @@ let rec const valu = St(fun () -> (valu, const valu))
    It should have type `'a -> 'a -> 'a stream`.
 *)
 
-
+let rec alt val1 (val2) = St(fun () -> (val1, alt val2 (val1)))
 
 (*
    Write a function `seq` that takes as input a start integer `a` and a step `step` and
