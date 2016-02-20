@@ -1,5 +1,7 @@
 (* These tests assume that you have implemented the function `take` as suggested *)
 let t1a = take 4 (const 3) = [3; 3; 3; 3]
+let t1b = take 0 (const 3) = []
+let t1c = take 10 (const 1) = [1; 1; 1; 1; 1; 1; 1; 1; 1; 1]
 
 let t2a = take 5 (alt 3 4) = [3; 4; 3; 4; 3]
 
