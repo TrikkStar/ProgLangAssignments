@@ -105,6 +105,10 @@ let rec seq a (step) = St(fun () -> (a, seq (a + step) step))
    It should have type `(int -> 'a) -> 'a stream`.
 *)
 
+let from_f func = 
+   let rec recursor fnc (n) = St(fun () -> (fnc n, recursor fnc (n+1)))
+   in recursor func (1)
+
 (*
    Write a function `from_list` that takes as input an `'a list` and returns a stream
    that produces the elements in the list one at a time, then starts all over. For

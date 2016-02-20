@@ -16,6 +16,7 @@ let t4a = take 5 (from_f (fun x -> x * x)) = [1; 4; 9; 16; 25]
    value is actually needed. *)
 let t4b = try (ignore (from_f (fun _ -> raise (Failure ""))); true) with
           | _ -> false
+let t4c = take 5 (from_f (fun x -> x + x)) = [2; 4; 6; 8; 10]
 
 let t5a = take 5 (from_list [3; 5; 6]) = [3; 5; 6; 3; 5]
 
