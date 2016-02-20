@@ -123,6 +123,11 @@ let const valu = St(fun () -> valu)
    It should have type `int -> 'a stream -> 'a list`.
 *)
 
+let rec take n (St thnk) =
+   if n <= 0
+   then []
+   else let (valu, strm) = thnk () 
+      in valu :: take (n-1) strm
 
 (*
    Write a function `drop` that takes as input a number `n` and a stream `st` and
