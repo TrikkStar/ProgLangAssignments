@@ -255,9 +255,11 @@ let rec collect n strm =
    It should have type: `'a list stream -> 'a stream`,
 *)
 
-(*let rec flatten (St thnk) = 
+let flatten (St thnk) = 
    let (value, strm) = thnk ()
-   in let*)
+   in let rec helper n lst =
+         
+      in helper valu
 
 (*
    Write a function `list_combos` that takes as input a `'a stream` st1 and a `'b stream`,
