@@ -47,6 +47,7 @@ let t12a = take 4 (filter (fun x -> x mod 2 = 0) (seq 1 1)) = [2; 4; 6; 8]
 let t12b = take 4 (filter (fun x -> x mod 2 = 1) (seq 1 1)) = [1; 3; 5; 7]
 
 let t13a = take 3 (collect 3 (seq 1 1)) = [[1; 2; 3]; [4; 5; 6]; [7; 8; 9]]
+let t13b = take 2 (collect 5 (seq 1 1)) = [[1 ;2; 3; 4; 5]; [6; 7; 8; 9; 10]]
 
 let t14a = take 5 (flatten (collect 3 (seq 1 1))) = [1; 2; 3; 4; 5]
 

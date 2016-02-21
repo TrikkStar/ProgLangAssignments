@@ -242,6 +242,8 @@ let rec filter func (St thnk) =
    It should have type `int -> 'a stream -> 'a list stream`.
 *)
 
+let rec collect n strm =
+   St (fun () ->(take n strm, collect n (drop n strm)))
 
 (*
    Write a function `flatten` that takes as input a `'a list stream` and "flattens" it
@@ -253,6 +255,9 @@ let rec filter func (St thnk) =
    It should have type: `'a list stream -> 'a stream`,
 *)
 
+(*let rec flatten (St thnk) = 
+   let (value, strm) = thnk ()
+   in let*)
 
 (*
    Write a function `list_combos` that takes as input a `'a stream` st1 and a `'b stream`,
