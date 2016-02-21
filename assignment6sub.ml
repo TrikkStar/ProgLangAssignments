@@ -186,6 +186,13 @@ let rec map func (St thnk) =
    It should have type `'a stream -> ('a * 'a) stream`.
 *)
 
+let rec pair_up stream = 
+   let helper (St thnk) = 
+      let (valu, strm) = thnk () 
+      in (valu, strm)
+   in let (valu, strm) = helper stream
+      in let (val2, strm2) = helper strm
+         in St (fun () -> ((valu, val2), pair_up strm2))
 
 (*
    Write a function `zip2` that takes as input a `'a stream` and a `'b stream` and

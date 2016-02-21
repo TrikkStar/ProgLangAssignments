@@ -35,6 +35,7 @@ let t8b = try (ignore (map (fun _ -> raise (Failure "")) (seq 1 1)); true) with
 let t8c = take 6 (prepend [1; 2] (map (fun x -> x * x) (seq 1 1))) = [1; 2; 1; 4; 9; 16]
 
 let t9a = take 3 (pair_up (seq 1 1)) = [(1, 2); (3, 4); (5, 6)]
+let t9b = take 3 (pair_up (prepend [1; 2] (map (fun x -> x * x) (seq 1 1)))) = [(1, 2); (1, 4); (9, 16)]
 
 let t10a = take 3 (zip2 (seq 1 2) (seq 2 3)) = [(1, 2); (3, 5); (5, 8)]
 
