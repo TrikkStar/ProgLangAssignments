@@ -32,6 +32,7 @@ let t8a = take 6 (map (fun x -> x * x) (seq 1 1)) = [1; 4; 9; 16; 25; 36]
    value is actually needed. *)
 let t8b = try (ignore (map (fun _ -> raise (Failure "")) (seq 1 1)); true) with
           | _ -> false
+let t8c = take 6 (prepend [1; 2] (map (fun x -> x * x) (seq 1 1))) = [1; 2; 1; 4; 9; 16]
 
 let t9a = take 3 (pair_up (seq 1 1)) = [(1, 2); (3, 4); (5, 6)]
 

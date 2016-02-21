@@ -174,6 +174,9 @@ let rec prepend lst strm =
    It should have type `('a -> 'b) -> 'a stream -> 'b stream`.
 *)
 
+let rec map func (St thnk) =
+   let (valu, strm) = thnk ()
+   in St (fun () -> (func valu, map (func) strm))
 
 (*
    Write a function `pair_up` that takes as input a `'a stream` and returns a
