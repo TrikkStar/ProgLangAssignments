@@ -25,6 +25,7 @@ let t6a = take 3 (drop 3 (seq 2 6)) = [20; 26; 32]
 let t6b = take 3 (drop 0 (seq 2 6)) = [2; 8; 14]
 
 let t7a = take 6 (prepend [1; 2] (const 3)) = [1; 2; 3; 3; 3; 3]
+let t7b = take 4 (prepend [] (alt 2 3)) = [2; 3; 2; 3]
 
 let t8a = take 6 (map (fun x -> x * x) (seq 1 1)) = [1; 4; 9; 16; 25; 36]
 (* The next test ensures that the function is not called until the corresponding

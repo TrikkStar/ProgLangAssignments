@@ -80,7 +80,7 @@ let take1 (St th) =      (* Pattern match on the stream variant. *)
    It should have type `'a -> 'a stream`.
 *)
 
-let rec const valu = St(fun () -> (valu, const valu))
+let rec const valu = St (fun () -> (valu, const valu))
 
 (*
    Write a function `alt` that takes as input two values of some type `'a` and returns
@@ -88,7 +88,7 @@ let rec const valu = St(fun () -> (valu, const valu))
    It should have type `'a -> 'a -> 'a stream`.
 *)
 
-let rec alt val1 (val2) = St(fun () -> (val1, alt val2 (val1)))
+let rec alt val1 (val2) = St (fun () -> (val1, alt val2 (val1)))
 
 (*
    Write a function `seq` that takes as input a start integer `a` and a step `step` and
@@ -97,7 +97,7 @@ let rec alt val1 (val2) = St(fun () -> (val1, alt val2 (val1)))
    It should have type `int -> int -> int stream`
 *)
 
-let rec seq a (step) = St(fun () -> (a, seq (a + step) step))
+let rec seq a (step) = St (fun () -> (a, seq (a + step) step))
 
 (*
    Write a function `from_f` that takes as input a function `int -> 'a` and returns
@@ -106,7 +106,7 @@ let rec seq a (step) = St(fun () -> (a, seq (a + step) step))
 *)
 
 let from_f func = 
-   let rec recursor fnc (n) = St(fun () -> (fnc n, recursor fnc (n+1)))
+   let rec recursor fnc (n) = St (fun () -> (fnc n, recursor fnc (n+1)))
    in recursor func (1)
 
 (*
@@ -122,7 +122,7 @@ let from_list lst =
    let rec recursor listX = 
       match listX with
       | [] -> recursor lst
-      | head :: rest -> St( fun () -> (head, recursor rest))
+      | head :: rest -> St ( fun () -> (head, recursor rest))
    in recursor lst
 
 (* Stream users. These functions take as input a stream, and either produce some value
@@ -160,6 +160,10 @@ let rec take n (St thnk) =
    It should have type: `'a list -> 'a stream -> 'a stream`.
 *)
 
+let rec prepend lst strm =
+   match lst with
+   | [] -> strm
+   | head :: rest -> St (fun () -> (head, prepend rest (strm)))
 
 (*
    Write a function `map` that takes as input a function `'a -> 'b` and a `'a stream`,
