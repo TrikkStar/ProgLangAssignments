@@ -228,7 +228,11 @@ let rec accum func valu (St thnk) =
    It should have type `('a -> bool) -> 'a stream -> 'a stream`.
 *)
 
-
+let rec filter func (St thnk) =
+   let (value, strm) = thnk ()
+   in if func value
+      then St (fun () -> (value, filter (func) strm))
+      else filter (func) strm
 
 (*
    Write a function `collect` that takes as input an integer `n > 0` and a `'a stream`
