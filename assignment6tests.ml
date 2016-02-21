@@ -41,6 +41,7 @@ let t10a = take 3 (zip2 (seq 1 2) (seq 2 3)) = [(1, 2); (3, 5); (5, 8)]
 let t10b = take 3 (zip2 (const 1) (seq 1 2)) = [(1, 1); (1, 3); (1, 5)]
 
 let t11a = take 4 (accum (+) 0 (seq 1 1)) = [0; 1; 3; 6]
+let t11b = take 4 (accum ( * ) 2 (seq 1 1)) = [2; 4; 6; 8]
 
 let t12a = take 4 (filter (fun x -> x mod 2 = 0) (seq 1 1)) = [2; 4; 6; 8]
 
