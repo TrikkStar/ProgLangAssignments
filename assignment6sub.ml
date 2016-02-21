@@ -216,7 +216,7 @@ let rec zip2 (St thnk1) (St thnk2) =
 
 let rec accum func valu (St thnk) =
    let (value, strm ) = thnk ()
-   in St (fun () -> ((func valu) value, accum (func) valu strm))
+   in St (fun () -> (valu, accum (func) (func valu value) strm))
 
 (*
    Write a function `filter` that takes as input a predicate function `'a -> bool` and
