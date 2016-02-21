@@ -214,6 +214,9 @@ let rec zip2 (St thnk1) (St thnk2) =
    It should have type `('b -> 'a -> 'b) -> 'b -> 'a stream -> 'b stream`.
 *)
 
+let rec accum func valu (St thnk) =
+   let (value, strm ) = thnk ()
+   in St (fun () -> ((func value valu), accum (func) valu (strm)))
 
 (*
    Write a function `filter` that takes as input a predicate function `'a -> bool` and
