@@ -200,6 +200,10 @@ let rec pair_up stream =
    It should have type `'a stream -> 'b stream -> ('a * 'b) stream`.
 *)
 
+let rec zip2 (St thnk1) (St thnk2) =
+   let (val1, strm1) = thnk1 ()
+   in let (val2, strm2) = thnk2 ()
+      in St (fun () -> ((val1, val2), zip2 strm1 (strm2)))
 
 (*
    Write a function `accum` that takes as input a function `'b -> 'a -> 'b`, an initial
