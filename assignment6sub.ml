@@ -138,7 +138,7 @@ let rec take n (St thnk) =
    if n <= 0
    then []
    else let (valu, strm) = thnk () 
-      in valu :: take (n-1) strm
+      in valu :: take (n - 1) strm
 
 (*
    Write a function `drop` that takes as input a number `n` and a stream `st` and
@@ -147,6 +147,11 @@ let rec take n (St thnk) =
    It should have type `int -> 'a stream -> 'a stream`.
 *)
 
+ let rec drop n (St thnk) =
+   if n <= 0
+   then St thnk 
+   else let (valu, strm) = thnk ()
+      in drop (n - 1) strm
 
 (*
    Write a function `prepend` that takes as input a `'a list` and a `'a stream` and

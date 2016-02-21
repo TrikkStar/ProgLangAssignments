@@ -22,6 +22,7 @@ let t5a = take 5 (from_list [3; 5; 6]) = [3; 5; 6; 3; 5]
 let t5b = take 5 (from_list [1]) = [1; 1; 1; 1; 1]
 
 let t6a = take 3 (drop 3 (seq 2 6)) = [20; 26; 32]
+let t6b = take 3 (drop 0 (seq 2 6)) = [2; 8; 14]
 
 let t7a = take 6 (prepend [1; 2] (const 3)) = [1; 2; 3; 3; 3; 3]
 
