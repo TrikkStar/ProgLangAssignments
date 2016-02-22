@@ -255,10 +255,12 @@ let rec collect n strm =
    It should have type: `'a list stream -> 'a stream`,
 *)
 
-let flatten (St thnk) = 
-   let (value, strm) = thnk ()
-   in let rec helper n lst =
-         
+let rec flatten (St thnk) = 
+   let (valu, strm) = thnk ()
+   in let rec helper lst =
+         if List.length lst = 0
+         then flatten strm
+         else St (fun () -> (List.hd lst, helper (List.tl lst)))
       in helper valu
 
 (*
