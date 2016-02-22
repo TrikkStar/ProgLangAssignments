@@ -284,7 +284,11 @@ let rec flatten (St thnk) =
    It should have type: 'a stream -> 'b stream -> ('a * 'b) list stream
 *)
 
-let rec list_combos srtm1 strm2 =
+let list_combos strm1 strm2 =
+   let rec helper lst1 lst2 (St thnk1) (St thnk2) =
+      
+   in helper [] [] strm1 strm2
+
 
 
 (*
