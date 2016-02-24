@@ -105,7 +105,7 @@ let rec seq a (step) = St (fun () -> (a, seq (a + step) step))
    It should have type `(int -> 'a) -> 'a stream`.
 *)
 
-let from_f func = 
+let from_f func =
    let rec recursor fnc (n) = St (fun () -> (fnc n, recursor fnc (n+1)))
    in recursor func (1)
 
@@ -118,8 +118,8 @@ let from_f func =
    It should have type `'a list -> 'a stream`.
 *)
 
-let from_list lst = 
-   let rec recursor listX = 
+let from_list lst =
+   let rec recursor listX =
       match listX with
       | [] -> recursor lst
       | head :: rest -> St ( fun () -> (head, recursor rest))
@@ -137,7 +137,7 @@ let from_list lst =
 let rec take n (St thnk) =
    if n <= 0
    then []
-   else let (valu, strm) = thnk () 
+   else let (valu, strm) = thnk ()
       in valu :: take (n - 1) strm
 
 (*
@@ -149,7 +149,7 @@ let rec take n (St thnk) =
 
  let rec drop n (St thnk) =
    if n <= 0
-   then St thnk 
+   then St thnk
    else let (valu, strm) = thnk ()
       in drop (n - 1) strm
 
@@ -186,9 +186,9 @@ let rec map func (St thnk) =
    It should have type `'a stream -> ('a * 'a) stream`.
 *)
 
-let rec pair_up stream = 
-   let helper (St thnk) = 
-      let (valu, strm) = thnk () 
+let rec pair_up stream =
+   let helper (St thnk) =
+      let (valu, strm) = thnk ()
       in (valu, strm)
    in let (valu, strm) = helper stream
       in let (val2, strm2) = helper strm
@@ -254,7 +254,7 @@ let rec collect n strm = St (fun () ->(take n strm, collect n (drop n strm)))
    It should have type: `'a list stream -> 'a stream`,
 *)
 
-let rec flatten (St thnk) = 
+let rec flatten (St thnk) =
    let (valu, strm) = thnk ()
    in let rec helper lst =
          if List.length lst = 0
@@ -286,7 +286,10 @@ let rec flatten (St thnk) =
 
 let list_combos strm1 strm2 =
    let rec helper lst1 lst2 (St thnk1) (St thnk2) =
-      
+      let (val1, strm1) = thnk1 ()
+      in let (val2, strm2) = thnk2 ()
+         in let (lst1, lst2) = (val1 :: lst1, val2 :: lst2)
+            in St (fun () -> (List.combine lst1 (List.rev lst2), helper lst1 lst2 strm1 strm2))
    in helper [] [] strm1 strm2
 
 
