@@ -78,3 +78,8 @@ let dims_pic pic =
 (*
    Add your other functions here
 *)
+
+let string_of_pxl pxl =
+   match pxl with
+   | D -> "*"
+   | H -> "#"
