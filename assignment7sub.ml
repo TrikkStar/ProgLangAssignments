@@ -17,7 +17,7 @@ let rec range a b = if a > b then [] else a :: range (a + 1) b
 
 let range1 a = range 1 a
 
-
+let tabulate func n = List.map func (range1 n)
 
 (* ---------------------------------
               PICTURES
