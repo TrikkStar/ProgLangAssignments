@@ -81,7 +81,7 @@ let dims_pic pic =
 
 let string_of_pxl pxl =
    match pxl with
-   | D -> "*"
+   | D -> "."
    | H -> "#"
 
-let string_of_row row = List.fold_left ((string_of_pxl) ("") row) ^ "\n"
+let string_of_row row = List.fold_right ((string_of_pxl) ("") row) ^ "\n"
