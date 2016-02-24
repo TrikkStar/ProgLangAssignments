@@ -84,4 +84,4 @@ let string_of_pxl pxl =
    | D -> "."
    | H -> "#"
 
-let string_of_row row = List.fold_right ((fun pxl str -> (string_of_pxl pxl) ^ str) row "\n")
+let string_of_row row = List.fold_right (fun pxl str -> (string_of_pxl pxl) ^ str) row "\n"
