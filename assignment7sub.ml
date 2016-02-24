@@ -83,3 +83,5 @@ let string_of_pxl pxl =
    match pxl with
    | D -> "*"
    | H -> "#"
+
+let string_of_row row = List.fold_left ((string_of_pxl) ("") row) ^ "\n"
