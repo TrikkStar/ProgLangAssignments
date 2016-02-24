@@ -85,3 +85,5 @@ let string_of_pxl pxl =
    | H -> "#"
 
 let string_of_row row = List.fold_right (fun pxl str -> (string_of_pxl pxl) ^ str) row "\n"
+
+let string_of_pic pic = List.fold_right (fun row str -> (string_of_row row) ^ str) pic ""
