@@ -19,3 +19,6 @@ let t7b = print_string (string_of_pic sword)
 
 let t8a = string_of_pic (flip_vertical doodad) = "#......\n..###..\n.#...#.\n.......\n.##.##.\n.##.##.\n.......\n"
 let t8b = print_string(string_of_pic sword)
+
+let t9a = string_of_pic (flip_horozontal doodad) = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n......#\n"
+let t9b = print_string (string_of_pic sword)
