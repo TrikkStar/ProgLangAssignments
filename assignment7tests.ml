@@ -28,4 +28,8 @@ let t10b = print_string (string_of_pic (flip_both sword))
 
 let t11a = dims_pic (mirror_vertical doodad) = (14, 7)
 let t11b = string_of_pic (mirror_vertical doodad) = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n#......\n#......\n..###..\n.#...#.\n.......\n.##.##.\n.##.##.\n.......\n"
-let t11c = print_string (string_of_pic sword)
+let t11c = print_string (string_of_pic (mirror_vertical sword))
+
+let t12a = dims_pic (mirror_horozontal doodad) = (7, 14)
+let t12b = string_of_pic (mirror_horozontal doodad) = "..............\n.##.##..##.##.\n.##.##..##.##.\n..............\n.#...#..#...#.\n..###....###..\n#............#\n"
+let t12c = print_string (string_of_pic (mirror_horozontal sword))
