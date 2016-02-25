@@ -89,3 +89,5 @@ let string_of_row row = List.fold_right (fun pxl str -> (string_of_pxl pxl) ^ st
 let string_of_pic pic = List.fold_right (fun row str -> (string_of_row row) ^ str) pic ""
 
 let flip_vertical pic = List.rev pic
+
+let flip_horozontal pic = List.map (List.rev) pic
