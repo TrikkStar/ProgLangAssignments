@@ -18,7 +18,10 @@ let t7a = string_of_pic doodad = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n.
 let t7b = print_string (string_of_pic sword)
 
 let t8a = string_of_pic (flip_vertical doodad) = "#......\n..###..\n.#...#.\n.......\n.##.##.\n.##.##.\n.......\n"
-let t8b = print_string(string_of_pic sword)
+let t8b = print_string(string_of_pic (flip_vertical sword))
 
 let t9a = string_of_pic (flip_horozontal doodad) = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n......#\n"
-let t9b = print_string (string_of_pic sword)
+let t9b = print_string (string_of_pic (flip_horozontal sword))
+
+let t10a = string_of_pic (flip_both doodad) = "......#\n..###..\n.#...#.\n.......\n.##.##.\n.##.##.\n.......\n"
+let t10b = print_string (string_of_pic (flip_both sword))
