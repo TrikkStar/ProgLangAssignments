@@ -97,3 +97,5 @@ let flip_both pic = flip_horozontal (flip_vertical pic)
 let mirror_vertical pic = pic @ (flip_vertical pic)
 
 let mirror_horozontal pic = List.map (fun p -> p @ (List.rev p)) pic
+
+let mirror_both pic = mirror_vertical (mirror_horozontal pic)
