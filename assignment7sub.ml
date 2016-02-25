@@ -60,7 +60,7 @@ let doodad = [
 [D;D;D;D;D;D;D];
 [D;H;D;D;D;H;D];
 [D;D;H;H;H;D;D];
-[D;D;D;D;D;D;D]]
+[H;D;D;D;D;D;D]]
 
 (*
    These two functions provided to you. Study how they work before continuing!

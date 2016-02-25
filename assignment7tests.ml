@@ -14,5 +14,5 @@ let t6a = string_of_row [D;D;D;D;D;D;D] = ".......\n"
 let t6b = string_of_row [H;H;H;H;H;H;H] = "#######\n"
 let t6c = string_of_row [D;D;H;D;H;D;D] = "..#.#..\n"
 
-let t7a = string_of_pic doodad = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n.......\n"
+let t7a = string_of_pic doodad = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n#......\n"
 let t7b = print_string (string_of_pic sword)
