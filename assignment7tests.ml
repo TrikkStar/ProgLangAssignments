@@ -16,3 +16,6 @@ let t6c = string_of_row [D;D;H;D;H;D;D] = "..#.#..\n"
 
 let t7a = string_of_pic doodad = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n#......\n"
 let t7b = print_string (string_of_pic sword)
+
+let t8a = string_of_pic (flip_vertical doodad) = "#......\n..###..\n.#...#.\n.......\n.##.##.\n.##.##.\n.......\n"
+let t8b = print_string(string_of_pic sword)
