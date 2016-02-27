@@ -108,3 +108,10 @@ let stack_vertical pic1 pic2 =
       if x = y
       then pic1 @ pic2
       else raise IncompatibleDims
+
+let stack_horozontal pic1 pic2 =
+   match (dims_pic pic1,  dims_pic pic2) with
+   | ((x, _), (y, _)) ->
+      if x = y
+      then List.fold_right2 (fun lst1 lst2 lst -> (lst1 @ lst2) :: lst) pic1 pic2 []
+      else raise IncompatibleDims
