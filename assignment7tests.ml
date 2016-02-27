@@ -56,3 +56,7 @@ let t15d = print_string (string_of_pic (stack_vertical sword sword))
 let t16a = dims_pic(stack_horozontal doodad doodad) = (7, 14)
 let t16b = string_of_pic (stack_horozontal doodad doodad) = "..............\n.##.##..##.##.\n.##.##..##.##.\n..............\n.#...#..#...#.\n..###....###..\n#......#......\n"
 let t16c = print_string (string_of_pic (stack_horozontal sword sword))
+
+let t17a = dims_pic (invert doodad) = dims_pic doodad
+let t17b = string_of_pic (invert doodad) = "#######\n#..#..#\n#..#..#\n#######\n#.###.#\n##...##\n.######\n"
+let t17c = print_string (string_of_pic (invert doodad))
