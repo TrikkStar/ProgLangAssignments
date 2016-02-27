@@ -52,3 +52,7 @@ let t15b = string_of_pic (stack_vertical doodad doodad) = ".......\n.##.##.\n.##
 			| exception -> true
 			| _ -> false*)
 let t15d = print_string (string_of_pic (stack_vertical sword sword))
+
+let t16a = dims_pic(stack_horozontal doodad doodad) = (7, 14)
+let t16b = string_of_pic (stack_horozontal doodad doodad) = "..............\n.##.##..##.##.\n.##.##..##.##.\n..............\n.#...#..#...#.\n..###....###..\n#......#......\n"
+let t16c = print_string (string_of_pic (stack_horozontal sword sword))
