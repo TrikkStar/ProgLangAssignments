@@ -100,4 +100,4 @@ let mirror_horozontal pic = List.map (fun p -> p @ (List.rev p)) pic
 
 let mirror_both pic = mirror_vertical (mirror_horozontal pic)
 
-let pixelate func m n = tabulate (func m n) m
+let pixelate func m n = List.fold_right (fun intX lst -> (tabulate (func intX) n) :: lst) (range1 m) []
