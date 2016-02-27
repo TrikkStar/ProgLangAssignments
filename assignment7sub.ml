@@ -117,3 +117,8 @@ let stack_horozontal pic1 pic2 =
       else raise IncompatibleDims
 
 let invert pic = List.map (fun row -> List.map (fun pxl -> if pxl = H then D else H) row) pic
+
+let transpose pic = 
+   match pic with
+   | [] -> []
+   | row :: rest -> List.fold_right (fun x lst -> List.map2 (fun pxl1 pxl2 -> pxl1 @ pxl2) (List.map (fun y -> y :: []) x) lst) pic (List.map (fun z -> []) row)
