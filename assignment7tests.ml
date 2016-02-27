@@ -59,4 +59,7 @@ let t16c = print_string (string_of_pic (stack_horozontal sword sword))
 
 let t17a = dims_pic (invert doodad) = dims_pic doodad
 let t17b = string_of_pic (invert doodad) = "#######\n#..#..#\n#..#..#\n#######\n#.###.#\n##...##\n.######\n"
-let t17c = print_string (string_of_pic (invert doodad))
+let t17c = print_string (string_of_pic (invert sword))
+
+let t18a = dims_pic (transpose doodad) = dims_pic doodad
+let t18b = string_of_pic (transpose doodad) = "......#\n.##.#..\n.##..#.\n.....#.\n.##..#.\n.##.#..\n.......\n"
