@@ -43,5 +43,12 @@ let t13c = print_string (string_of_pic (mirror_both sword))
 let toPixel a b = if a mod b = 0
 				then H
 				else D
-let t15a = dims_pic (pixelate (toPixel) 3 5) = (3, 5)
-let t15b = string_of_pic (pixelate (toPixel) 3 5)
+let t14a = dims_pic (pixelate (toPixel) 3 5) = (3, 5)
+let t14b = string_of_pic (pixelate (toPixel) 3 5)
+
+let t15a = dims_pic(stack_vertical doodad doodad) = (14, 7)
+let t15b = string_of_pic (stack_vertical doodad doodad) = ".......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n#......\n.......\n.##.##.\n.##.##.\n.......\n.#...#.\n..###..\n#......\n"
+(*let t15c = try (stack_vertical doodad sword) with
+			| exception -> true
+			| _ -> false*)
+let t15d = print_string (string_of_pic (stack_vertical sword sword))

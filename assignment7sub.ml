@@ -102,4 +102,9 @@ let mirror_both pic = mirror_vertical (mirror_horozontal pic)
 
 let pixelate func m n = List.fold_right (fun intX lst -> (tabulate (func intX) n) :: lst) (range1 m) []
 
-let stack_vertical pic1 pic2 = pic1 @ pic2
+let stack_vertical pic1 pic2 = 
+   match (dims_pic pic1,  dims_pic pic2) with
+   | ((_, x), (_, y)) -> 
+      if x = y
+      then pic1 @ pic2
+      else raise IncompatibleDims
