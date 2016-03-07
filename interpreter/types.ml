@@ -6,7 +6,7 @@ type exprS = NumS of float
 
 (* You will need to add more cases here. *)
 type exprC = NumC of float
-
+type exprC = BoolC of bool
 
 (* You will need to add more cases here. *)
 type value = Num of float
