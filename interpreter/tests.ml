@@ -18,3 +18,5 @@ let t0d = evaluate (desugar (NumS 2.3)) = Num 2.3
 
 let t1a = evaluate (BoolC false) = Bool false
 let t1b = evaluate (BoolC true) = Bool true
+let t1c = desugar (BoolS false) = Bool false
+let t1d = desugar (BoolS true) = Bool true
