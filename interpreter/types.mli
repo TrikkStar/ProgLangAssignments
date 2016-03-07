@@ -2,6 +2,7 @@ exception Desugar of string      (* Use for desugarer errors *)
 exception Interp of string       (* Use for interpreter errors *)
 
 type exprS = NumS of float
+type exprS = BoolS of bool
 type exprC = NumC of float
 type exprC = BoolC of bool
 type value = Num of float
