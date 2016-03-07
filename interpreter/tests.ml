@@ -15,3 +15,6 @@ let t0c = desugar (NumS 2.3) = NumC 2.3
 
 (* Or you can combine with evaluate to get to the final value. *)
 let t0d = evaluate (desugar (NumS 2.3)) = Num 2.3
+
+let t1a = evaluate (BoolC false) = Bool false
+let t1b = evaluate (BoolC true) = Bool true
