@@ -4,6 +4,7 @@ exception Interp of string       (* Use for interpreter errors *)
 type exprS = NumS of float
 type exprC = NumC of float
 type value = Num of float
+type value = Bool of bool
 
 (* Environment lookup *)
 type 'a env

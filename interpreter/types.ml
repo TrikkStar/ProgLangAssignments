@@ -10,6 +10,7 @@ type exprC = NumC of float
 
 (* You will need to add more cases here. *)
 type value = Num of float
+type value = Bool of bool
 
 type 'a env = (string * 'a) list
 let empty = []
@@ -48,3 +49,4 @@ let evaluate exprC = exprC |> interp []
 (* You will need to add cases to this function as you add new value types. *)
 let rec valToString r = match r with
   | Num i           -> string_of_float i
+  | Bool b          -> string_of_bool b
