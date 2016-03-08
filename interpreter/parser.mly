@@ -21,7 +21,7 @@ headEx:
 
 expr:
   | FLOAT                        { NumS $1 }
-  | FALSE                        { BoolS }
-  | TRUE                         { BoolS }
+  | FALSE                        { BoolS false }
+  | TRUE                         { BoolS true }
 ;
 
