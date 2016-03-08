@@ -3,15 +3,15 @@ exception Interp of string       (* Use for interpreter errors *)
 
 (* You will need to add more cases here. *)
 type exprS = NumS of float
-type exprS = BoolS of bool
+            | BoolS of bool
 
 (* You will need to add more cases here. *)
 type exprC = NumC of float
-type exprC = BoolC of bool
+            | BoolC of bool
 
 (* You will need to add more cases here. *)
 type value = Num of float
-type value = Bool of bool
+            | Bool of bool
 
 type 'a env = (string * 'a) list
 let empty = []
