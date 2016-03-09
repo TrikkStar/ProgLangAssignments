@@ -3,11 +3,11 @@ exception Interp of string       (* Use for interpreter errors *)
 
 type exprS = NumS of float
             | BoolS of bool
-            | IfS of (exprS, exprS, exprS)
+            | IfS of tuple
 
 type exprC = NumC of float
             | BoolC of bool
-            | IfC of (exprC, exprC, exprC)
+            | IfC of tuple
 
 type value = Num of float
             | Bool of bool

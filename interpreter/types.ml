@@ -4,12 +4,12 @@ exception Interp of string       (* Use for interpreter errors *)
 (* You will need to add more cases here. *)
 type exprS = NumS of float
             | BoolS of bool
-            | IfS of (exprS, exprS, exprS)
+            | IfS of tuple
 
 (* You will need to add more cases here. *)
 type exprC = NumC of float
             | BoolC of bool
-            | IfC (exprC, exprC, exprC)
+            | IfC of tuple
 
 (* You will need to add more cases here. *)
 type value = Num of float
