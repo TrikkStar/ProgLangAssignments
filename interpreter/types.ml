@@ -38,7 +38,7 @@ let bind str v env = (str, v) :: env
 let rec desugar exprS = match exprS with
   | NumS i        -> NumC i
   | BoolS b       -> BoolC b
-  | IfS (a, b, c) -> IfC (a, b, c)
+  | IfS (a, b, c) -> IfC (desugar a, desugar b, desugar c)
 
 (* You will need to add cases here. *)
 (* interp : Value env -> exprC -> value *)
@@ -46,11 +46,12 @@ let rec interp env r = match r with
   | NumC i        -> Num i
   | BoolC b       -> Bool b
   | IfC (a, b, c) ->
-    if (interp env a) != Bool x
-    then raise Interp
-    else if x
-        then interp env b
-        else interp env c
+    (match (interp env a) with
+        | Bool x ->
+            if x
+            then interp env b
+            else interp env c
+        | _ -> raise Interp)
 
 (* evaluate : exprC -> val *)
 let evaluate exprC = exprC |> interp []
