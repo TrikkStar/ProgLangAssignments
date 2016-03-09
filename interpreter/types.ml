@@ -43,7 +43,12 @@ let rec desugar exprS = match exprS with
 let rec interp env r = match r with
   | NumC i        -> Num i
   | BoolC b       -> Bool b
-  | IfC (a, b, c) -> 
+  | IfC (a, b, c) ->
+    if (interp env a) != Bool x
+    then raise Interp
+    else if x
+        then interp env b
+        else interp env c
 
 (* evaluate : exprC -> val *)
 let evaluate exprC = exprC |> interp []
