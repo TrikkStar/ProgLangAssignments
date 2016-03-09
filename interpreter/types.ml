@@ -51,7 +51,7 @@ let rec interp env r = match r with
             if x
             then interp env b
             else interp env c
-        | _ -> raise Interp)
+        | _ -> raise (Interp "Error, boolean statement needed"))
 
 (* evaluate : exprC -> val *)
 let evaluate exprC = exprC |> interp []
