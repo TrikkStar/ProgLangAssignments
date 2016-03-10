@@ -4,16 +4,16 @@ exception Interp of string       (* Use for interpreter errors *)
 (* You will need to add more cases here. *)
 type exprS = NumS of float
             | BoolS of bool
-            | IfS of (exprS * exprS * exprS)
-            | OrS of (exprS * exprS)
-            | AndS of (exprS * exprS)
+            | IfS of exprS * exprS * exprS
+            | OrS of exprS * exprS
+            | AndS of exprS * exprS
             | NotS of exprS
 
 (* You will need to add more cases here. *)
 type exprC = NumC of float
             | BoolC of bool
-            | IfC of (exprC * exprC * exprC)
-            | ArithC<string> of (exprC * exprC)
+            | IfC of exprC * exprC * exprC
+            | ArithC of string * exprC * exprC
 
 (* You will need to add more cases here. *)
 type value = Num of float
@@ -43,7 +43,7 @@ let arithEval str x y =
         | "+" -> Num (a +. b)
         | "-" -> Num (a -. b)
         | "*" -> Num (a *. b)
-        | "/" -> if b = 0
+        | "/" -> if b = 0.0
                 then raise (Interp "Error: invalid denominator")
                 else Num (a /. b)
         | _ -> raise (Interp "Error: invalid symbol"))
@@ -73,7 +73,7 @@ let rec interp env r = match r with
             then interp env b
             else interp env c
         | _ -> raise (Interp "Error: boolean statement needed"))
-  | ArithC<a> (x, y) -> arithEval a (interp  env x) (interp env y)
+  | ArithC (a, x, y) -> arithEval a (interp  env x) (interp env y)
 
 (* evaluate : exprC -> val *)
 let evaluate exprC = exprC |> interp []
