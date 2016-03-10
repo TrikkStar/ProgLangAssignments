@@ -13,6 +13,7 @@ type exprS = NumS of float
 type exprC = NumC of float
             | BoolC of bool
             | IfC of (exprC * exprC * exprC)
+            | ArithC<string> of (exprC * exprC)
 
 (* You will need to add more cases here. *)
 type value = Num of float
@@ -34,6 +35,20 @@ let bind str v env = (str, v) :: env
    You may be asked to add methods here. You may also choose to add your own
    helper methods here.
 *)
+
+let arithEval str x y =
+  match (x, y) with
+  | (Num a, Num b) ->
+    (match str with
+        | "+" -> Num (a +. b)
+        | "-" -> Num (a -. b)
+        | "*" -> Num (a *. b)
+        | "/" -> if b = 0
+                then raise (Interp "Error: invalid denominator")
+                else Num (a /. b)
+        | _ -> raise (Interp "Error: invalid symbol"))
+  | _ -> raise (Interp "Error: invalid type")
+
 (* INTERPRETER *)
 
 (* You will need to add cases here. *)
@@ -57,7 +72,8 @@ let rec interp env r = match r with
             if x
             then interp env b
             else interp env c
-        | _ -> raise (Interp "Error, boolean statement needed"))
+        | _ -> raise (Interp "Error: boolean statement needed"))
+  | ArithC<a> (x, y) -> arithEval a (interp  env x) (interp env y)
 
 (* evaluate : exprC -> val *)
 let evaluate exprC = exprC |> interp []

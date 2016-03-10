@@ -26,3 +26,5 @@ let t2b = evaluate (IfC (IfC (BoolC false, BoolC true, BoolC false), NumC 2.7, N
 let t2c = evaluate (desugar (NotS (BoolS true))) = Bool false
 let t2d = evaluate (desugar (OrS (BoolS false, BoolS true))) = Bool true
 let t2e = evaluate (desugar (AndS (BoolS false, BoolS true))) = Bool false
+
+let t3a = evaluate (ArithC<"+"> (NumC 2, NumC 4)) = Num 6
