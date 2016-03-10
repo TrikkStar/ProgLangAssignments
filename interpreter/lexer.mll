@@ -25,6 +25,6 @@ rule token = parse
   | false       { FALSE }
   | "if"        { IF }
   | "then"      { THEN }
-  | "else"      { ElSE }
+  | "else"      { ELSE }
   | eof         { raise Eof }
   | any         { raise Unrecognized }

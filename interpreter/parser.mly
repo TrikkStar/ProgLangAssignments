@@ -25,6 +25,6 @@ expr:
   | FLOAT                        { NumS $1 }
   | FALSE                        { BoolS false }
   | TRUE                         { BoolS true }
-  | IF expr THEN expr ELSE expr  { IfC ($2, $4, $6) }
+  | IF expr THEN expr ELSE expr  { IfS ($2, $4, $6) }
 ;
 
