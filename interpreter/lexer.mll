@@ -23,5 +23,8 @@ rule token = parse
   | float as x  { FLOAT (float_of_string x) }
   | true        { TRUE }
   | false       { FALSE }
+  | "if"        { IF }
+  | "then"      { THEN }
+  | "else"      { ElSE }
   | eof         { raise Eof }
   | any         { raise Unrecognized }
