@@ -27,5 +27,7 @@ let t2c = evaluate (desugar (NotS (BoolS true))) = Bool false
 let t2d = evaluate (desugar (OrS (BoolS false, BoolS true))) = Bool true
 let t2e = evaluate (desugar (AndS (BoolS false, BoolS true))) = Bool false
 
-let t3a = evaluate (ArithC ("+", NumC 2, NumC 4)) = Num 6.0
-let t3b = evaluate (desugar (ArithS ("*", NumS 7, NumS 2))) = Num 14.0
+let t3a = evaluate (ArithC ("+", NumC 2.0, NumC 4.0)) = Num 6.0
+let t3b = evaluate (desugar (ArithS ("*", NumS 7.0, NumS 2.0))) = Num 14.0
+let t3c = evaluate (desugar (ArithS ("/", NumS 37.0, NumS 4.0))) = Num 9.25
+let t3d = evaluate (desugar (ArithS ("-", NumS 3.0, NumS 12.0))) = Num (-9.0)
