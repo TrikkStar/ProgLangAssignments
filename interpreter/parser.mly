@@ -9,11 +9,17 @@
 %token OR
 %token AND
 %token NOT
+%token PLUS
+%token MINUS
+%token TIMES
+%token DIVIDE
 
 %nonassoc FLOAT
 %nonassoc ELSE
 %nonassoc OR AND
 %nonassoc NOT
+%left PLUS MINUS
+%left TIMES DIVIDE
 
 %start main
 %type <Types.exprS> main
@@ -35,5 +41,9 @@ expr:
   | expr OR expr                 { OrS ($1, $3) }
   | expr AND expr                { AndS ($1, $3) }
   | NOT expr                     { NotS $2 }
+  | expr PLUS expr 				 { ArithS ("+", $1, $3) }
+  | expr MINUS expr 			 { ArithS ("-", $1, $3) }
+  | expr TIMES expr 			 { ArithS ("*", $1, $3) }
+  | expr DIVIDE expr 			 { ArithS ("/", $1, $3) }
 ;
 

@@ -29,5 +29,9 @@ rule token = parse
   | "and"       { AND }
   | "or"        { OR }
   | "not"       { NOT }
+  | "+"         { PLUS }
+  | "-"         { MINUS }
+  | "*"         { TIMES }
+  | "/"         { DIVIDE }
   | eof         { raise Eof }
   | any         { raise Unrecognized }
