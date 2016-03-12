@@ -10,6 +10,8 @@ type exprS = NumS of float
             | NotS of exprS
             | ArithS of string * exprS * exprS
             | CompS of string * exprS * exprS
+            | EqS of exprS * exprS
+            | NeqS of exprS * exprS
 
 (* You will need to add more cases here. *)
 type exprC = NumC of float
@@ -17,6 +19,7 @@ type exprC = NumC of float
             | IfC of exprC * exprC * exprC
             | ArithC of string * exprC * exprC
             | CompC of string * exprC * exprC
+            | EqC of exprC * exprC
 
 (* You will need to add more cases here. *)
 type value = Num of float
@@ -61,7 +64,13 @@ let compEval str x y =
         | "<" -> Bool (a < b)
         | "<=" -> Bool (a <= b)
         | _ -> raise (Interp "Error: invalid operator"))
-  | _ -> raise (Interp "Error: invalid type")  
+  | _ -> raise (Interp "Error: invalid type")
+
+let eqEval x y =
+  match (x, y) with
+  | (Bool a, Bool b) -> Bool (a == b)
+  | (Num a, Num b) -> Bool (a ==. b)
+  | _ -> Bool false
 
 (* INTERPRETER *)
 
@@ -76,6 +85,8 @@ let rec desugar exprS = match exprS with
   | AndS (e1, e2) -> IfC (desugar e1, IfC (desugar e2, BoolC true, BoolC false), BoolC false)
   | ArithS (s, a, b) -> ArithC (s, desugar a, desugar b)
   | CompS (s, a, b) -> CompC (s, desugar a, desugar b)
+  | EqS (a, b)    -> EqC (desugar a, desugar b)
+  | NeqS (a, b)   -> desugar (NotS (EqS (a, b)))
 
 (* You will need to add cases here. *)
 (* interp : Value env -> exprC -> value *)
@@ -91,6 +102,7 @@ let rec interp env r = match r with
         | _ -> raise (Interp "Error: boolean statement needed"))
   | ArithC (a, x, y) -> arithEval a (interp  env x) (interp env y)
   | CompC (a, x, y) -> compEval a (interp  env x) (interp env y)
+  | EqC (x, y) ->  eqEval (interp env x) (interp env y)
 
 (* evaluate : exprC -> val *)
 let evaluate exprC = exprC |> interp []
