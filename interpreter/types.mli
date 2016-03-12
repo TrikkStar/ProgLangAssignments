@@ -9,6 +9,8 @@ type exprS = NumS of float
             | NotS of exprS
             | ArithS of string * exprS * exprS
             | CompS of string * exprS * exprS
+            | EqS of exprS * exprS
+            | NeqS of exprS * exprS
 
 type exprC = NumC of float
             | BoolC of bool

@@ -35,5 +35,7 @@ rule token = parse
   | "*"         { TIMES }
   | "/"         { DIVIDE }
   | comp as s   { COMPOP s }
+  | "=="        { EQ }
+  | "!="        { NEQ }
   | eof         { raise Eof }
   | any         { raise Unrecognized }
