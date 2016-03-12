@@ -13,11 +13,14 @@
 %token MINUS
 %token TIMES
 %token DIVIDE
+%token <string> COMPOP
 
 %nonassoc FLOAT
 %nonassoc ELSE
 %nonassoc OR AND
 %nonassoc NOT
+%nonassoc COMPOP
+
 %left PLUS MINUS
 %left TIMES DIVIDE
 
@@ -45,5 +48,6 @@ expr:
   | expr MINUS expr 			 { ArithS ("-", $1, $3) }
   | expr TIMES expr 			 { ArithS ("*", $1, $3) }
   | expr DIVIDE expr 			 { ArithS ("/", $1, $3) }
+  | expr COMPOP expr 			 { CompS ($2, $1, $3) }
 ;
 
