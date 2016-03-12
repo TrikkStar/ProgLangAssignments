@@ -68,8 +68,8 @@ let compEval str x y =
 
 let eqEval x y =
   match (x, y) with
-  | (Bool a, Bool b) -> Bool (a == b)
-  | (Num a, Num b) -> Bool (a ==. b)
+  | (Bool a, Bool b) -> Bool (a = b)
+  | (Num a, Num b) -> Bool (a = b)
   | _ -> Bool false
 
 (* INTERPRETER *)

@@ -36,3 +36,8 @@ let t4a = evaluate (desugar (CompS (">", NumS 7.0, NumS 2.0))) = Bool true
 let t4b = evaluate (desugar (CompS (">=", NumS 7.0, NumS 42.0))) = Bool false
 let t4c = evaluate (desugar (CompS ("<", NumS 7.0, NumS 2.0))) = Bool false
 let t4d = evaluate (desugar (CompS ("<=", NumS 2.0, NumS 2.0))) = Bool true
+
+let t5a = evaluate (desugar (EqS (NumS 7.0, NumS 2.0))) = Bool false
+let t5b = evaluate (desugar (EqS (BoolS false, BoolS false))) = Bool true
+let t5c = evaluate (desugar (NeqS (NumS 7.0, NumS 2.0))) = Bool true
+let t5d = evaluate (desugar (NeqS (BoolS true, BoolS true))) = Bool false
