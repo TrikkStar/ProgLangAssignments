@@ -6,3 +6,4 @@ interpreter/parser.mli
 interpreter/lang
 compiled
 *.rkt~
+*.bak

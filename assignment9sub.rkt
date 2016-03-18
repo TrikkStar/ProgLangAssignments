@@ -12,6 +12,13 @@
 ;; `number?`. The result for an empty list should be 0.
 ;; The reference solution is 5 lines.
 
+(define (add-nums lst)
+  (if (null? lst)
+      0
+      (if (number? (car lst))
+          (+ (car lst)
+             (add-nums (cdr lst)))
+          (add-nums (cdr lst)))))
 
 ;; Write a function `length`. It takes as input a list and returns the length of the
 ;; list.
