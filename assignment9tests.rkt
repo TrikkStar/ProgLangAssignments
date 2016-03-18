@@ -9,7 +9,7 @@
 ;; add-nums
 (equal? (add-nums (list)) 0) ;;empty list
 (equal? (add-nums (list 1 2 'a 3)) 6) ;; non-number
-
+#|
 ;; length
 (equal? (length (list)) 0) ;; empty list
 
@@ -38,3 +38,4 @@
 ;; call-all
 (equal? (call-all (list (lambda () 2)))
      (list 2))        ;; one-element
+|#
