@@ -35,6 +35,14 @@
 ;; return `(error "list too short")`.
 ;; The reference solution is 5 lines.
 
+(define (get-nth lst ar)
+  (if (< ar 0)
+      (error "negative index")
+      (if (and ((null? (car lst)) (> ar 0)))
+          (error "list too short")
+          (if (= ar 0)
+              (car lst)
+              (get-nth (cdr lst)(- ar 1))))))
 
 ;; Write a function `every-other`. It takes as input a list, and it returns a new list
 ;; where every other term is skipped. So applied to the list `'(1 2 3)` it should return

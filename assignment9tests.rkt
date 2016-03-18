@@ -13,12 +13,13 @@
 ;; length
 (equal? (length (list)) 0) ;; empty list
 (equal? (length (list 3 4 'a 6)) 4)
-#|
+
 ;; get-nth
 (with-handlers ([exn:fail? (lambda (exn) (equal? (exn-message exn)
                                                  "negative index"))])
     (get-nth null -2))   ;;negative index
-
+(equal? (get-nth ((list 2 4 5 6 8) 3)) 6)
+#|
 ;; every-other
 (equal? (every-other (list 1 2 3 4)) (list 1 3)) ;; even length
 (equal? (every-other (list 1 2 3)) (list 1 3))   ;; odd length
