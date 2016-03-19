@@ -43,9 +43,11 @@
 ;; `'(1 3)`, and the same for the list `'(1 2 3 4)`.
 ;; The reference solution is 5 lines.
 
-;(define (every-other lst)
+(define (every-other lst)
+  (cond [(null? lst) (list)]
+        [(null? (cdr lst)) (cons (car lst) (list))]
+        [else (cons (car lst) (every-other (cdr (cdr lst))))]))
   
-
 ;; Write a function `map`. It takes two arguments: a function and a list. It then
 ;; returns a new list of the result of applying the function on each element.
 ;; The reference solution is 5 lines.

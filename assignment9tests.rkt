@@ -19,11 +19,11 @@
                                                  "negative index"))])
     (get-nth null -2))   ;;negative index
 (equal? (get-nth (list 2 4 5 6 8) 3) 6)
-#|
+
 ;; every-other
 (equal? (every-other (list 1 2 3 4)) (list 1 3)) ;; even length
 (equal? (every-other (list 1 2 3)) (list 1 3))   ;; odd length
-
+#|
 ;; map
 (equal? (map (lambda (x) (* x x)) (list 1 2 3))
      (list 1 4 9))       ;; squaring
