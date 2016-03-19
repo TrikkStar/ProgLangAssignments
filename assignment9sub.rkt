@@ -13,12 +13,9 @@
 ;; The reference solution is 5 lines.
 
 (define (add-nums lst)
-  (if (null? lst)
-      0
-      (if (number? (car lst))
-          (+ (car lst)
-             (add-nums (cdr lst)))
-          (add-nums (cdr lst)))))
+  (cond [(null? lst) 0]
+        [(number? (car lst)) (+ (car lst) (add-nums (cdr lst)))]
+        [else (add-nums (cdr lst))]))
 
 ;; Write a function `length`. It takes as input a list and returns the length of the
 ;; list.
@@ -36,19 +33,18 @@
 ;; The reference solution is 5 lines.
 
 (define (get-nth lst ar)
-  (if (< ar 0)
-      (error "negative index")
-      (if (and ((null? (car lst)) (> ar 0)))
-          (error "list too short")
-          (if (= ar 0)
-              (car lst)
-              (get-nth (cdr lst)(- ar 1))))))
+  (cond [(< ar 0) (error "negative index")]
+        [(> ar (length lst)) (error "list too short")]
+        [(= ar 0) (car lst)]
+        [else (get-nth (cdr lst)(- ar 1))]))
 
 ;; Write a function `every-other`. It takes as input a list, and it returns a new list
 ;; where every other term is skipped. So applied to the list `'(1 2 3)` it should return
 ;; `'(1 3)`, and the same for the list `'(1 2 3 4)`.
 ;; The reference solution is 5 lines.
 
+;(define (every-other lst)
+  
 
 ;; Write a function `map`. It takes two arguments: a function and a list. It then
 ;; returns a new list of the result of applying the function on each element.
