@@ -40,8 +40,7 @@
 (equal? (filter (lambda (x) (= (modulo x 2) 1))
                (list 1 2 3 4))
      (list 1 3))      ;; odd
-#|
+
 ;; call-all
 (equal? (call-all (list (lambda () 2)))
      (list 2))        ;; one-element
-|#
