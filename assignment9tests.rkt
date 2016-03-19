@@ -23,11 +23,13 @@
 ;; every-other
 (equal? (every-other (list 1 2 3 4)) (list 1 3)) ;; even length
 (equal? (every-other (list 1 2 3)) (list 1 3))   ;; odd length
-#|
+
 ;; map
 (equal? (map (lambda (x) (* x x)) (list 1 2 3))
      (list 1 4 9))       ;; squaring
-
+(equal? (map (lambda (x) (+ x x)) (list 1 2 3))
+     (list 2 4 6))
+#|
 ;; map2
 (equal? (map2 (lambda (x y) (* x y)) (list 1 2 3) (list 2 3 4))
      (list 2 6 12))      ;; multiply

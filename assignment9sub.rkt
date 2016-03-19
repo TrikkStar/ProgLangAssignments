@@ -52,6 +52,9 @@
 ;; returns a new list of the result of applying the function on each element.
 ;; The reference solution is 5 lines.
 
+(define (map fun lst)
+  (cond [(null? lst) (list)]
+        [else (cons (fun (car lst)) (map fun (cdr lst)))]))
 
 ;; Write a function `map2`. It takes three arguments: a function that takes two inputs
 ;; and two lists. It then creates a single new list by applying the function to pairs
