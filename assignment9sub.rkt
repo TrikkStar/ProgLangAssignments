@@ -35,7 +35,7 @@
 (define (get-nth lst ar)
   (cond [(< ar 0) (error "negative index")]
         [(> ar (length lst)) (error "list too short")]
-        [(= ar 0) (car lst)]
+        [(equal? ar 0) (car lst)]
         [else (get-nth (cdr lst)(- ar 1))]))
 
 ;; Write a function `every-other`. It takes as input a list, and it returns a new list
@@ -70,6 +70,10 @@
 ;; a new list consisting of those elements for which the function does not return #f
 ;; The reference solution is 5 lines.
 
+(define (filter fun lst)
+  (cond [(null? lst) (list)]
+        [(equal? (fun (car lst)) #t) (cons (car lst) (filter fun (cdr lst)))]
+        [else (filter fun (cdr lst))]))
 
 ;; Write a function `call-all`. It takes as input a list of "thunks", and returns a
 ;; list of the results of calling those thunks. To call a function, you put it as the

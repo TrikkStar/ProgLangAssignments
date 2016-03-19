@@ -35,12 +35,12 @@
      (list 2 6 12))      ;; multiply
 (equal? (map2 (lambda (x y) (+ x y)) (list 1 2 3) (list 2 3 4))
      (list 3 5 7))
-#|
+
 ;; filter
 (equal? (filter (lambda (x) (= (modulo x 2) 1))
                (list 1 2 3 4))
      (list 1 3))      ;; odd
-
+#|
 ;; call-all
 (equal? (call-all (list (lambda () 2)))
      (list 2))        ;; one-element
