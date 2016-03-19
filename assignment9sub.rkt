@@ -14,7 +14,8 @@
 
 (define (add-nums lst)
   (cond [(null? lst) 0]
-        [(number? (car lst)) (+ (car lst) (add-nums (cdr lst)))]
+        [(number? (car lst)) (+ (car lst)
+                                (add-nums (cdr lst)))]
         [else (add-nums (cdr lst))]))
 
 ;; Write a function `length`. It takes as input a list and returns the length of the
@@ -45,8 +46,10 @@
 
 (define (every-other lst)
   (cond [(null? lst) (list)]
-        [(null? (cdr lst)) (cons (car lst) (list))]
-        [else (cons (car lst) (every-other (cdr (cdr lst))))]))
+        [(null? (cdr lst)) (cons (car lst)
+                                 (list))]
+        [else (cons (car lst)
+                    (every-other (cdr (cdr lst))))]))
   
 ;; Write a function `map`. It takes two arguments: a function and a list. It then
 ;; returns a new list of the result of applying the function on each element.
@@ -54,7 +57,8 @@
 
 (define (map fun lst)
   (cond [(null? lst) (list)]
-        [else (cons (fun (car lst)) (map fun (cdr lst)))]))
+        [else (cons (fun (car lst))
+                    (map fun (cdr lst)))]))
 
 ;; Write a function `map2`. It takes three arguments: a function that takes two inputs
 ;; and two lists. It then creates a single new list by applying the function to pairs
@@ -64,7 +68,8 @@
 (define (map2 fun lst1 lst2)
   (cond [(null? lst1) (list)]
         [(null? lst2) (list)]
-        [else (cons (fun (car lst1) (car lst2)) (map2 fun (cdr lst1) (cdr lst2)))]))
+        [else (cons (fun (car lst1) (car lst2))
+                    (map2 fun (cdr lst1) (cdr lst2)))]))
 
 ;; Write a function `filter`. It takes as input a function and a list and returns
 ;; a new list consisting of those elements for which the function does not return #f
@@ -72,7 +77,8 @@
 
 (define (filter fun lst)
   (cond [(null? lst) (list)]
-        [(equal? (fun (car lst)) #t) (cons (car lst) (filter fun (cdr lst)))]
+        [(equal? (fun (car lst)) #t) (cons (car lst)
+                                           (filter fun (cdr lst)))]
         [else (filter fun (cdr lst))]))
 
 ;; Write a function `call-all`. It takes as input a list of "thunks", and returns a
@@ -82,4 +88,5 @@
 
 (define (call-all lst)
   (cond [(null? lst) (list)]
-        [else (cons ((car lst)) (call-all (cdr lst)))]))
+        [else (cons ((car lst))
+                    (call-all (cdr lst)))]))
