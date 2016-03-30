@@ -14,7 +14,7 @@
 (equal? (bind 'x (num 4) empty) (list (binding 'x (num 4))))
 (equal? (bind 'x (num 4) (bind 'y (num 5) empty)) sample-env1)
 (equal? (bind 'x (num 4) (bind 'x (num 5) empty)) sample-env2)
-#|
+
 ;; lookup
 (displayln "lookup tests")
 (with-handlers ([exn:fail? (lambda (exn) #t)])
@@ -26,7 +26,7 @@
 (with-handlers ([exn:fail? (lambda (exn) #t)])
   (equal? (lookup 'z sample-env1) (num 4)))
 
-
+#|
 ;; valid-program?
 (displayln "valid-program? tests")
 (define example1

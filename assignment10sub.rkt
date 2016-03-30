@@ -43,8 +43,10 @@
 ;; It should throw an appropriate "lookup failed" error if it can't find
 ;; the symbol.
 (define (lookup s env)
-  (error (string-append "lookup: symbol not defined: "
-                        (symbol->string s))))
+  (cond [(equal? (binding-s (car env)) s) (binding-v (car env))]
+        [(not (equal? null (car env))) (lookup s (cdr env))]
+        [else (error (string-append "lookup: symbol not defined: "
+                        (symbol->string s)))]))
 
 ;;            THE LANGUAGE
 ;; We define the language in terms of structs.
