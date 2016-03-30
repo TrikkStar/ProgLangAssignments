@@ -26,7 +26,7 @@
 (with-handlers ([exn:fail? (lambda (exn) #t)])
   (equal? (lookup 'z sample-env1) (num 4)))
 
-#|
+
 ;; valid-program?
 (displayln "valid-program? tests")
 (define example1
@@ -39,7 +39,7 @@
 (valid-program? (num 5))
 (not (valid-program? (num "f")))
 (valid-program? example1)
-
+#|
 ;; value?
 (displayln "value? tests")
 (value? (num 5))

@@ -108,6 +108,13 @@
          (and (memq (arith-op e) (list '+ '* '- '/))
               (valid-program? (arith-e1 e))
               (valid-program? (arith-e2 e)))]
+        [(var? e) (symbol? var-s)]
+        [(num? e) (number? num-n)]
+        [(bool? e) (boolean? bool-b)]
+        [(comp? e)
+         (and (memq (comp-op e) (list '< '<= '>= '>))
+              (valid-program? (comp-e1 e))
+              (valid-program? (comp-e2 e)))]
         [else #f]))
 
 
