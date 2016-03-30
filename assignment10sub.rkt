@@ -109,8 +109,8 @@
               (valid-program? (arith-e1 e))
               (valid-program? (arith-e2 e)))]
         [(var? e) (symbol? var-s)]
-        [(num? e) (number? num-n)]
-        [(bool? e) (boolean? bool-b)]
+        [(num? e) (number? (num-n e))]
+        [(bool? e) (boolean? (bool-b e))]
         [(comp? e)
          (and (memq (comp-op e) (list '< '<= '>= '>))
               (valid-program? (comp-e1 e))
@@ -127,9 +127,9 @@
               (valid-program? (let-e-e1 e))
               (valid-program? (let-e-e2 e)))]
         [(fun? e)
-         (and (symbol? fun-arg)
-              (or (false? fun-name)
-                  (not (equal? fun-name fun-arg)))
+         (and (symbol? (fun-arg e))
+              (or (false? (fun-name e))
+                  (not (equal? (fun-name e) (fun-arg e))))
               (valid-program? (fun-body e)))]
         [(call? e)
          (and (valid-program? (call-e1 e))
