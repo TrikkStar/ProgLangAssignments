@@ -115,6 +115,32 @@
          (and (memq (comp-op e) (list '< '<= '>= '>))
               (valid-program? (comp-e1 e))
               (valid-program? (comp-e2 e)))]
+        [(if-e? e)
+         (and (valid-program? (if-e-tst e))
+              (valid-program? (if-e-thn e))
+              (valid-program? (if-e-els e)))]
+        [(eq-e? e)
+         (and (valid-program? (eq-e-e1 e))
+              (valid-program? (eq-e-e2 e)))]
+        [(let-e? e)
+         (and (symbol? let-e-s)
+              (valid-program? (let-e-e1 e))
+              (valid-program? (let-e-e2 e)))]
+        [(fun? e)
+         (and (symbol? fun-arg)
+              (or (false? fun-name)
+                  (not (equal? fun-name fun-arg)))
+              (valid-program? (fun-body e)))]
+        [(call? e)
+         (and (valid-program? (call-e1 e))
+              (valid-program? (call-e2 e)))]
+        [(nul? e) (#t)]
+        [(isnul? e) (valid-program? (isnul-e e))]
+        [(pair-e e)
+         (and (valid-program? (pair-e-e1 e))
+              (valid-program? (pair-e-e2 e)))]
+        [(fst? e) (valid-program? (fst-e e))]
+        [(snd? e) (valid-program? (fst-e e))]
         [else #f]))
 
 
