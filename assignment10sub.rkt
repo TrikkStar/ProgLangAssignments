@@ -140,7 +140,7 @@
          (and (valid-program? (pair-e-e1 e))
               (valid-program? (pair-e-e2 e)))]
         [(fst? e) (valid-program? (fst-e e))]
-        [(snd? e) (valid-program? (fst-e e))]
+        [(snd? e) (valid-program? (snd-e e))]
         [else #f]))
 
 

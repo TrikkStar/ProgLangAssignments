@@ -48,6 +48,8 @@
 (valid-program? (nul))
 (valid-program? (isnul (num 42)))
 (valid-program? (pair-e (bool #t) (bool #f)))
+(valid-program? (fst (pair-e (bool #t) (bool #f))))
+(valid-program? (snd (pair-e (bool #t) (bool #f))))
 #|
 ;; value?
 (displayln "value? tests")
