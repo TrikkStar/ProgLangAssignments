@@ -180,7 +180,13 @@
 (define (value-eq? v1 v2)
   (cond [(and (num? v1) (num? v2))
          (equal? (num-n v1) (num-n v2))]
-        [else #f]))          ;; <---- Need to add more cases
+        [(and (bool? v1) (bool? v2))
+         (equal? (bool-b v1) (bool-b v2))]
+        [(and (nul? v1) (nul? v2)) #t]
+        [(and (pair-e? v1) (pair-e? v2))
+         (and (equal? (pair-e-e1 v1) (pair-e-e1 v2))
+              (equal? (pair-e-e2 v1) (pair-e-e2 v2)))]
+        [else #f]))
               
 
 ;;       INTERPRETATION

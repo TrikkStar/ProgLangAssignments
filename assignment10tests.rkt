@@ -56,13 +56,13 @@
 (value? (num 5))
 (value? (bool #t))
 (not (value? (pair-e (arith '+ (num 2) (num 3)) (num 2))))
-#|
+
 ;; value-eq?
 (displayln "value-eq? tests")
 (value-eq? (num 5) (num 5))
 (not (value-eq? (num 5) (bool #t)))
 (not (value-eq? (num 5) (num 3.2)))
-
+#|
 ;; interp / evaluate
 (displayln "interp/evaluate tests")
 (equal? (evaluate (num 3))
