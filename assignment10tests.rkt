@@ -50,13 +50,13 @@
 (valid-program? (pair-e (bool #t) (bool #f)))
 (valid-program? (fst (pair-e (bool #t) (bool #f))))
 (valid-program? (snd (pair-e (bool #t) (bool #f))))
-#|
+
 ;; value?
 (displayln "value? tests")
 (value? (num 5))
 (value? (bool #t))
 (not (value? (pair-e (arith '+ (num 2) (num 3)) (num 2))))
-
+#|
 ;; value-eq?
 (displayln "value-eq? tests")
 (value-eq? (num 5) (num 5))

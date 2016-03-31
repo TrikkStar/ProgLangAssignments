@@ -165,7 +165,8 @@
       (bool? e)
       (nul? e)
       (clos? e)
-      (and (value? (pair-e-e1 e))
+      (and (pair-e? e)
+           (value? (pair-e-e1 e))
            (value? (pair-e-e2 e)))))
 
 ;; TODO: Write a function `value-eq?` to test if two values are "equal".
