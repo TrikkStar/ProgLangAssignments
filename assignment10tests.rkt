@@ -39,13 +39,22 @@
 (valid-program? (num 5))
 (not (valid-program? (num "f")))
 (valid-program? example1)
-
+(valid-program? (arith '* (num 2) (num 3)))
+(valid-program? (bool #t))
+(valid-program? (comp '< (num 3) (num 4)))
+(valid-program? (if-e (bool #t) (num 3) (num 4)))
+(valid-program? (eq-e (bool #f) (num 7)))
+(valid-program? (call (bool #f) (num 2)))
+;;(valid-program? (nul))
+(valid-program? (isnul (num 42)))
+(valid-program? (pair-e (bool #t) (bool #f)))
+#|
 ;; value?
 (displayln "value? tests")
 (value? (num 5))
 (value? (bool #t))
 (not (value? (pair-e (arith '+ (num 2) (num 3)) (num 2))))
-#|
+
 ;; value-eq?
 (displayln "value-eq? tests")
 (value-eq? (num 5) (num 5))
