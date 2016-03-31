@@ -45,7 +45,7 @@
 (valid-program? (if-e (bool #t) (num 3) (num 4)))
 (valid-program? (eq-e (bool #f) (num 7)))
 (valid-program? (call (bool #f) (num 2)))
-;;(valid-program? (nul))
+(valid-program? (nul))
 (valid-program? (isnul (num 42)))
 (valid-program? (pair-e (bool #t) (bool #f)))
 #|

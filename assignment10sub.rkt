@@ -136,7 +136,7 @@
               (valid-program? (call-e2 e)))]
         [(nul? e) (#t)]
         [(isnul? e) (valid-program? (isnul-e e))]
-        [(pair-e e)
+        [(pair-e? e)
          (and (valid-program? (pair-e-e1 e))
               (valid-program? (pair-e-e2 e)))]
         [(fst? e) (valid-program? (fst-e e))]
