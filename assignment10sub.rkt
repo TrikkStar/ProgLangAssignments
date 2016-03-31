@@ -128,13 +128,14 @@
               (valid-program? (let-e-e2 e)))]
         [(fun? e)
          (and (symbol? (fun-arg e))
-              (or (false? (fun-name e))
-                  (not (equal? (fun-name e) (fun-arg e))))
-              (valid-program? (fun-body e)))]
+              (or (equal? (fun-name e) #f)
+                  (and (symbol? (fun-name e))
+                       (not (equal? (fun-name e) (fun-arg e))))
+              (valid-program? (fun-body e))))]
         [(call? e)
          (and (valid-program? (call-e1 e))
               (valid-program? (call-e2 e)))]
-        [(nul? e) (#t)]
+        [(nul? e) #t]
         [(isnul? e) (valid-program? (isnul-e e))]
         [(pair-e? e)
          (and (valid-program? (pair-e-e1 e))
