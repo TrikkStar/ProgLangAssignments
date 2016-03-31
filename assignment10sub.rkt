@@ -251,6 +251,8 @@
            (if (and (num? v1) (num? v2))
                (num (op (num-n v1) (num-n v2)))
                (error "interp: arithmetic on non-numbers")))]
+        [(bool? e) e]
+        [(nul? e) e]
         [else (error "interp: unknown expression")]))
  
 ;;         EVALUATE

@@ -62,7 +62,7 @@
 (value-eq? (num 5) (num 5))
 (not (value-eq? (num 5) (bool #t)))
 (not (value-eq? (num 5) (num 3.2)))
-#|
+
 ;; interp / evaluate
 (displayln "interp/evaluate tests")
 (equal? (evaluate (num 3))
@@ -76,7 +76,7 @@
   (equal? (evaluate (comp '< (num 3) (num 2)))
           (bool #f)))
 
-
+#|
 ;; neq
 (displayln "neq tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])
