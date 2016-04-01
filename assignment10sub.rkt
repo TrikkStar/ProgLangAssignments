@@ -243,26 +243,36 @@
 ;; Some cases done for you.
 (define (interp env e)
   (cond [(num? e) e]
-        [(arith? e)
-         (let ([v1 (interp env (arith-e1 e))]
-               [v2 (interp env (arith-e2 e))]
-               [op (case (arith-op e)
-                     ['+ +] ['- -] ['* *] ['/ /])])
-           (if (and (num? v1) (num? v2))
-               (num (op (num-n v1) (num-n v2)))
-               (error "interp: arithmetic on non-numbers")))]
+        [(arith? e) (let ([v1 (interp env (arith-e1 e))]
+                          [v2 (interp env (arith-e2 e))]
+                          [op (case (arith-op e)
+                                ['+ +] ['- -] ['* *] ['/ /])])
+                      (if (and (num? v1) (num? v2))
+                          (num (op (num-n v1) (num-n v2)))
+                          (error "interp: arithmetic on non-numbers")))]
         [(bool? e) e]
         [(nul? e) e]
         [(var? e) (lookup e env)]
-        [(comp? e)
-         (if (and (num? (comp-e1 e))
-                  (num? (comp-e2 e)))
-             (cond [(equal? (comp-op e) '<) (< (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
-               [(equal? (comp-op e) '<=) (<= (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
-               [(equal? (comp-op e) '>) (> (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
-               [(equal? (comp-op e) '>=) (>= (interp env (comp-e1 e)) (interp env (comp-e2 e)))])
-             (error "argument(s) not nums"))]
-        [(if-e? e) (
+        [(comp? e) (if (and (num? (comp-e1 e))
+                            (num? (comp-e2 e)))
+                       (cond [(equal? (comp-op e) '<) (< (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
+                             [(equal? (comp-op e) '<=) (<= (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
+                             [(equal? (comp-op e) '>) (> (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
+                             [(equal? (comp-op e) '>=) (>= (interp env (comp-e1 e)) (interp env (comp-e2 e)))])
+                       (error "argument(s) not nums"))]
+        [(if-e? e) (if (bool? (if-e-tst e))
+                       (if (interp env (if-e-tst e))
+                           (interp env (if-e-thn e))
+                           (interp env (if-e-els)))
+                       (error "argument not a bool"))]
+        [(eq-e? e) (value-eq? (interp env (eq-e-e1 e)) (interp env (eq-e-e1 e)))]
+        [(let-e? e) (interp (bind (let-e-s e)
+                                  (interp env (let-e-e1)))
+                            (let-e-e2 e))]
+        [(fun? e) (clos e env)]
+        [(call? e) (if (clos? (interp env (call-e1 e)))
+                       (#f)
+                       (error "no function closure"))]
         [else (error "interp: unknown expression")]))
  
 ;;         EVALUATE
