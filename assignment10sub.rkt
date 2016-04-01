@@ -253,6 +253,16 @@
                (error "interp: arithmetic on non-numbers")))]
         [(bool? e) e]
         [(nul? e) e]
+        [(var? e) (lookup e env)]
+        [(comp? e)
+         (if (and (num? (comp-e1 e))
+                  (num? (comp-e2 e)))
+             (cond [(equal? (comp-op e) '<) (< (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
+               [(equal? (comp-op e) '<=) (<= (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
+               [(equal? (comp-op e) '>) (> (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
+               [(equal? (comp-op e) '>=) (>= (interp env (comp-e1 e)) (interp env (comp-e2 e)))])
+             (error "argument(s) not nums"))]
+        [(if-e? e) (
         [else (error "interp: unknown expression")]))
  
 ;;         EVALUATE
