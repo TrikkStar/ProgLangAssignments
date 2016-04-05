@@ -314,20 +314,17 @@
 ;; TODO: Write a function `neq` that takes as input two source language
 ;; expressions and returns the expression that tests that they are not
 ;; equal. This should be a combination of `not-e` and `eq-e`.
-(define (neq e1 e2)
-  #f)      ; <---- Need to fix this
+(define (neq e1 e2) (not-e (eq-e e1 e2)))
 
 ;; TODO: Write a function `or2` that takes as input two source language
 ;; expressions `e1` and `e2` and returns the appropriate `if-e` expression
 ;; that performs the "or" of the two expressions.
-(define (or2 e1 e2)
-  #f)   ;  <----- Need to fix this
+(define (or2 e1 e2) (if-e e1 (bool #t) e2))
 
 ;; TODO: Write a function `and2` that takes as input two source language
 ;; expressions `e1` and `e2` and returns the appropriate `if-e` expression
 ;; that performs the "and" of the two expressions.
-(define (and2 e1 e2)
-  #f)   ;  <----- Need to fix this
+(define (and2 e1 e2) (if-e e1 e2 (bool #f)))
 
 ;; TODO: Write a function `or-e` that takes as input any number of source
 ;; language expressions as input and creates the corresponding nested

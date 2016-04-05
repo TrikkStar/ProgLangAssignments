@@ -76,7 +76,7 @@
   (equal? (evaluate (comp '< (num 3) (num 2)))
           (bool #f)))
 
-#|
+
 ;; neq
 (displayln "neq tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])
@@ -91,14 +91,13 @@
                          (bool #t)))
           (bool #t)))
 
-
 ;; and2
 (displayln "and2 tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])
   (equal? (evaluate (and2 (comp '> (num 2) (num 3))
                          (bool #t)))
           (bool #f)))
-
+#|
 
 ;; or-e
 (displayln "or-e tests")
