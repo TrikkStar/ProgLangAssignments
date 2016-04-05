@@ -271,8 +271,18 @@
                             (let-e-e2 e))]
         [(fun? e) (clos e env)]
         [(call? e) (if (clos? (interp env (call-e1 e)))
-                       (#f)
+                       (if (equal? #f (fun-name (interp env (call-e1 e))))
+                           (interp (clos-env (interp env (call-e1 e))) (call-e2 e))
+                           (interp (bind (fun-name (clos-f (interp env (call-e1 e)))) (interp env (clos-f (interp env (call-e1 e)))) (clos-f (interp env (call-e1 e))) (call-e2 e))))
                        (error "no function closure"))]
+        [(isnul? e) (bool (nul? (interp env (isnul-e e))))]
+        [(pair-e? e) (pair-e (interp env (pair-e-e1 e) (pair-e-e2 e)))]
+        [(fst? e) (if (pair-e? (fst-e e))
+                      (pair-e-e1 e)
+                      (error "not a pair"))]
+        [(snd? e) (if (pair-e? (snd-e e))
+                      (pair-e-e2 e)
+                      (error "not a pair"))]
         [else (error "interp: unknown expression")]))
  
 ;;         EVALUATE
