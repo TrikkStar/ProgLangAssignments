@@ -344,7 +344,7 @@
 ;; learn about the syntax for `foldr`.
 (define or-e
   (lambda es
-    (foldr (lambda (nxt
+    (foldr (lambda (acc nxt) (or2 acc nxt))
            null
            es)))
 
