@@ -117,7 +117,7 @@
                            (bool #t)))
           (bool #f)))
 
-#|
+
 ;; let-e*
 (displayln "let-e* tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])
@@ -127,7 +127,7 @@
                    (arith '+ (var 'x) (var 'y))))
           (num 8)))
 
-
+#|
 ;; plus / times
 (displayln "plus/times tests")
 ;; Test commented out until you implement plus

@@ -268,7 +268,7 @@
                          (error "interp: argument not a bool")))]
         [(eq-e? e) (bool (value-eq? (interp env (eq-e-e1 e)) (interp env (eq-e-e2 e))))]
         [(let-e? e) (interp (bind (let-e-s e)
-                                  (interp env (let-e-e1))
+                                  (interp env (let-e-e1 e))
                                   env)
                             (let-e-e2 e))]
         [(fun? e) (clos e env)]
@@ -364,7 +364,7 @@
   (syntax-rules ()
     [(let-e* () e) e]
     [(let-e* ([s1 e1]) e) (let-e s1 e1 e)]
-    [(let-e* ([s1 e1] rest ...) e) #f]))  ; <-- Need to fix this.
+    [(let-e* ([s1 e1] rest ...) e) (let-e s1 e1 (let-e* (rest ...) e))]))
 
 ;; TODO: Write functions or macros `plus`, and `mult` that take any number
 ;; of source language expressions as arguments and creates a corresponding
