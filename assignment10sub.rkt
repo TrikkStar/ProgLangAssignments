@@ -344,10 +344,8 @@
 ;; learn about the syntax for `foldr`.
 (define or-e
   (lambda es
-    (foldr (if (nul? (car es))
-               (bool #f)
-               (if-e (car es) (bool #t) (or-e (cdr es)))) 
-           nul 
+    (foldr (lambda (nxt
+           null
            es)))
 
 ;; TODO: We will similarly do something for `and-e`, but for this one
