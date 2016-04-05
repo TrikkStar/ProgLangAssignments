@@ -373,9 +373,13 @@
 ;; for 0 or 1 respectively.
 ;; You can choose either a macro approach like in `and-e` or a function
 ;; approach and `foldr` like in `or-e`.
+(define plus
+  (lambda es
+    (foldr (lambda (a n) (plus2 a n)) (num 0) es)))
 
-
-
+(define mult
+  (lambda es
+    (foldr (lambda (a n) (mult2 a n)) (num 1) es)))
 
 ;; TODO: Write a macro `minus` that takes one or more arguments and behaves
 ;; as follows:

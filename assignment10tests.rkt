@@ -127,17 +127,13 @@
                    (arith '+ (var 'x) (var 'y))))
           (num 8)))
 
-#|
 ;; plus / times
 (displayln "plus/times tests")
-;; Test commented out until you implement plus
-
-;(equal? (evaluate (plus (num 2) (num 5) (num 3)))
-;        (num 10))
-;(equal? (evaluate (mult (num 2) (num 5) (num 3)))
-;        (num 30))
-
-
+(equal? (evaluate (plus (num 2) (num 5) (num 3)))
+        (num 10))
+(equal? (evaluate (mult (num 2) (num 5) (num 3)))
+        (num 30))
+#|
 ;; minus
 ;(displayln "minus tests")
 ;(equal? (evaluate (minus (num 10) (num 5) (num 3)))
