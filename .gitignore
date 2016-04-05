@@ -7,3 +7,4 @@ interpreter/lang
 compiled
 *.rkt~
 *.bak
+*.1

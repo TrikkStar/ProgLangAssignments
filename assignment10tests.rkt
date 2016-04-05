@@ -80,7 +80,6 @@
 (equal? (evaluate (eq-e (num 42) (num 42))) (bool #t))
 (equal? (evaluate (eq-e (num 42) (num 5))) (bool #f))
 
-
 ;; neq
 (displayln "neq tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])
