@@ -75,7 +75,11 @@
 (with-handlers ([exn:fail? (lambda (exn) #f)])
   (equal? (evaluate (comp '< (num 3) (num 2)))
           (bool #f)))
-(equal? (evaluate (bool #f)) #f)
+(equal? (evaluate (bool #f)) (bool #f))
+(equal? (evaluate (if-e (bool #f) (num 4) (num 5))) (num 5))
+(equal? (evaluate (eq-e (num 42) (num 42))) (bool #t))
+(equal? (evaluate (eq-e (num 42) (num 5))) (bool #f))
+
 
 ;; neq
 (displayln "neq tests")

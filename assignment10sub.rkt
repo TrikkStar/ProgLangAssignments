@@ -262,11 +262,11 @@
                          (error "interp: comparison on non-number")))]
         [(if-e? e) (let ([tst (interp env (if-e-tst e))])
                      (if (bool? tst)
-                         (if (interp env tst)
+                         (if (equal? (interp env tst) (bool #t))
                              (interp env (if-e-thn e))
-                             (interp env (if-e-els)))
+                             (interp env (if-e-els e)))
                          (error "interp: argument not a bool")))]
-        [(eq-e? e) (bool (value-eq? (interp env (eq-e-e1 e)) (interp env (eq-e-e1 e))))]
+        [(eq-e? e) (bool (value-eq? (interp env (eq-e-e1 e)) (interp env (eq-e-e2 e))))]
         [(let-e? e) (interp (bind (let-e-s e)
                                   (interp env (let-e-e1))
                                   env)
