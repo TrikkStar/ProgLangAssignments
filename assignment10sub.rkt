@@ -253,36 +253,41 @@
         [(bool? e) e]
         [(nul? e) e]
         [(var? e) (lookup (var-s e) env)]
-        [(comp? e) (if (and (num? (comp-e1 e))
-                            (num? (comp-e2 e)))
-                       (cond [(equal? (comp-op e) '<) (< (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
-                             [(equal? (comp-op e) '<=) (<= (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
-                             [(equal? (comp-op e) '>) (> (interp env (comp-e1 e)) (interp env (comp-e2 e)))]
-                             [(equal? (comp-op e) '>=) (>= (interp env (comp-e1 e)) (interp env (comp-e2 e)))])
-                       (error "argument(s) not nums"))]
-        [(if-e? e) (if (bool? (if-e-tst e))
-                       (if (interp env (if-e-tst e))
-                           (interp env (if-e-thn e))
-                           (interp env (if-e-els)))
-                       (error "argument not a bool"))]
-        [(eq-e? e) (value-eq? (interp env (eq-e-e1 e)) (interp env (eq-e-e1 e)))]
+        [(comp? e) (let ([e1 (interp env (comp-e1 e))]
+                         [e2 (interp env (comp-e2 e))]
+                         [op (case (comp-op e)
+                               ['< <] ['<= <=] ['> >] ['>= >=])])
+                     (if (and (num? e1) (num? e2))
+                         (bool (op (num-n e1) (num-n e2)))
+                         (error "interp: comparison on non-number")))]
+        [(if-e? e) (let ([tst (interp env (if-e-tst e))])
+                     (if (bool? tst)
+                         (if (interp env (bool-b tst))
+                             (interp env (if-e-thn e))
+                             (interp env (if-e-els)))
+                         (error "interp: argument not a bool")))]
+        [(eq-e? e) (bool (value-eq? (interp env (eq-e-e1 e)) (interp env (eq-e-e1 e))))]
         [(let-e? e) (interp (bind (let-e-s e)
-                                  (interp env (let-e-e1)))
+                                  (interp env (let-e-e1))
+                                  env)
                             (let-e-e2 e))]
         [(fun? e) (clos e env)]
-        [(call? e) (if (clos? (interp env (call-e1 e)))
-                       (if (equal? #f (fun-name (interp env (call-e1 e))))
-                           (interp (clos-env (interp env (call-e1 e))) (call-e2 e))
-                           (interp (bind (fun-name (clos-f (interp env (call-e1 e)))) (interp env (clos-f (interp env (call-e1 e)))) (clos-f (interp env (call-e1 e))) (call-e2 e))))
-                       (error "no function closure"))]
+        [(call? e) (let ([e1 (interp env (call-e1 e))])
+                     (if (clos? e1)
+                         (if (equal? #f (fun-name e1))
+                             (interp (clos-env e1) (call-e2 e))
+                             (interp (bind (fun-name (clos-f e1)) (interp env (clos-f e1)) (clos-env e1) (call-e2 e))))
+                         (error "interp: no function closure")))]
         [(isnul? e) (bool (nul? (interp env (isnul-e e))))]
         [(pair-e? e) (pair-e (interp env (pair-e-e1 e) (pair-e-e2 e)))]
-        [(fst? e) (if (pair-e? (fst-e e))
-                      (pair-e-e1 e)
-                      (error "not a pair"))]
-        [(snd? e) (if (pair-e? (snd-e e))
-                      (pair-e-e2 e)
-                      (error "not a pair"))]
+        [(fst? e) (let ([x (interp env (fst-e e))])
+                    (if (pair-e? x)
+                        (interp env (pair-e-e1 x))
+                        (error "interp: not a pair")))]
+        [(snd? e) (let ([x (interp env (snd-e e))])
+                    (if (pair-e? x)
+                        (interp env (pair-e-e2 x))
+                        (error "interp: not a pair")))]
         [else (error "interp: unknown expression")]))
  
 ;;         EVALUATE
