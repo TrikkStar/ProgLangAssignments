@@ -108,7 +108,7 @@
                           (bool #f)
                           (bool #t)))
           (bool #t)))
-#|
+
 ;; and-e
 (displayln "and-e tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])
@@ -117,7 +117,7 @@
                            (bool #t)))
           (bool #f)))
 
-
+#|
 ;; let-e*
 (displayln "let-e* tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])

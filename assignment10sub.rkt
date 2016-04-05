@@ -344,9 +344,7 @@
 ;; learn about the syntax for `foldr`.
 (define or-e
   (lambda es
-    (foldr (lambda (acc nxt) (or2 acc nxt))
-           null
-           es)))
+    (foldr (lambda (acc nxt) (or2 acc nxt)) null es)))
 
 ;; TODO: We will similarly do something for `and-e`, but for this one
 ;; we will instead build a macro. For no arguments, this should return
@@ -356,7 +354,7 @@
   (syntax-rules ()
     [(and-e) (bool #t)]
     [(and-e e1) e1]
-    [(and-e e1 e2 ...) #f]))   ; <-- Need to fix this. Use and2 and "recursion"
+    [(and-e e1 e2 ...) (and2 e1 (and-e e2 ...))]))
 
 ;; TODO: Build a `let-e*` macro that takes input like:
 ;; `(let-e* ([s1 e1] [s2 e2] ...) e)` and creates the equivalent nested 
