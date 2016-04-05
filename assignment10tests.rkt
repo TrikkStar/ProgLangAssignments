@@ -100,7 +100,6 @@
   (equal? (evaluate (and2 (comp '> (num 2) (num 3))
                          (bool #t)))
           (bool #f)))
-#|
 
 ;; or-e
 (displayln "or-e tests")
@@ -109,8 +108,7 @@
                           (bool #f)
                           (bool #t)))
           (bool #t)))
-
-
+#|
 ;; and-e
 (displayln "and-e tests")
 (with-handlers ([exn:fail? (lambda (exn) #f)])

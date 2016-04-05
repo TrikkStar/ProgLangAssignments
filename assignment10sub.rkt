@@ -262,7 +262,7 @@
                          (error "interp: comparison on non-number")))]
         [(if-e? e) (let ([tst (interp env (if-e-tst e))])
                      (if (bool? tst)
-                         (if (equal? (interp env tst) (bool #t))
+                         (if (bool-b tst)
                              (interp env (if-e-thn e))
                              (interp env (if-e-els e)))
                          (error "interp: argument not a bool")))]
@@ -344,7 +344,11 @@
 ;; learn about the syntax for `foldr`.
 (define or-e
   (lambda es
-    (bool #f)))
+    (foldr (if (nul? (car es))
+               (bool #f)
+               (if-e (car es) (bool #t) (or-e (cdr es)))) 
+           nul 
+           es)))
 
 ;; TODO: We will similarly do something for `and-e`, but for this one
 ;; we will instead build a macro. For no arguments, this should return
