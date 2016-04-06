@@ -133,13 +133,12 @@
         (num 10))
 (equal? (evaluate (mult (num 2) (num 5) (num 3)))
         (num 30))
-#|
+
 ;; minus
-;(displayln "minus tests")
-;(equal? (evaluate (minus (num 10) (num 5) (num 3)))
-;        (num 2))
-
-
+(displayln "minus tests")
+(equal? (evaluate (minus (num 10) (num 5) (num 3)))
+        (num 2))
+#|
 ;; racketlist->sourcelist
 (displayln "racketlist->sourcelist tests")
 (equal? (racketlist->sourcelist (list (num 2) (num 5)))

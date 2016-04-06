@@ -388,9 +388,10 @@
 ;;    from the first one.
 ;; Try out the function `-` in Racket to see examples of the behavior.
 ;; Do this as a macro, similar to `and-e`.
-
-
-
+(define-syntax minus
+  (syntax-rules ()
+    [(minus e1) (arith '- (num 0) e1)]
+    [(minus e1 e2 ...) (minus2 e1 (minus e2 ...))]))
 
 ;;            LISTS
 ;; A source language list is, analogously to Racket's lists, a nested
