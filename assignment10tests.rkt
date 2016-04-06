@@ -138,7 +138,7 @@
 (displayln "minus tests")
 (equal? (evaluate (minus (num 10) (num 5) (num 3)))
         (num 2))
-#|
+
 ;; racketlist->sourcelist
 (displayln "racketlist->sourcelist tests")
 (equal? (racketlist->sourcelist (list (num 2) (num 5)))
@@ -150,6 +150,5 @@
   (equal? (evaluate
            (call (call map-e (fun #f 'x (plus2 (var 'x) (num 2))))
                  (pair-e (num 2) (pair-e (num 5) (nul)))))
-          (pair-e (num 4) (pair-e (num 7) (nul)))))
-|#         
+          (pair-e (num 4) (pair-e (num 7) (nul)))))         
 
