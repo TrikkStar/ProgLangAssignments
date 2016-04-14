@@ -274,7 +274,7 @@
         [(fun? e) (clos e env)]
         [(call? e) (let ([e1 (interp env (call-e1 e))])
                      (if (clos? e1)
-                         (if (equal? #f (fun-name e1))
+                         (if (equal? #f (fun-name (clos-f e1)))
                              (interp (clos-env e1) (call-e2 e))
                              (interp (bind (fun-name (clos-f e1)) (interp env (clos-f e1)) (clos-env e1) (call-e2 e))))
                          (error "interp: no function closure")))]
